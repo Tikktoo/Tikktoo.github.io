@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/27/常见命令及explainshell.com 网站简介/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/06/27/常见命令及explainshell.com 网站简介/" itemprop="url">ls cat mv touch 如何使用以及 explainshell.com 网站简介</a></h1>
         
 
         <div class="post-meta">
@@ -300,8 +300,7 @@
       
         
           
-            <hr>
-<h2 id="title-ls-cat-mv-touch-如何使用以及-explainshell-com-网站简介"><a href="#title-ls-cat-mv-touch-如何使用以及-explainshell-com-网站简介" class="headerlink" title="title:ls cat mv touch 如何使用以及 explainshell.com 网站简介"></a>title:ls cat mv touch 如何使用以及 explainshell.com 网站简介</h2><h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>显示指定目录下的文件和目录，默认为当前目录。</p>
+            <h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>显示指定目录下的文件和目录，默认为当前目录。</p>
 <p>-a 显示所有文件及目录 (ls内定将文件名或目录名称开头为”.”的视为隐藏档，不会列出)<br><br>-l 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出<br><br>-r 将文件以相反次序显示(原定依英文字母次序)<br><br>-t 将文件依建立时间之先后次序列出<br><br>-A 同 -a ，但不列出 “.” (目前目录) 及 “..” (父目录)<br><br>-F 在列出的文件名称后加一符号；<br><br>-R 若目录下有文件，则以下之文件亦皆依序列出</p>
 <h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><p>用来查看文件内容。</p>
 <p>-n 或 –number：由 1 开始对所有输出的行数编号。<br><br>-b 或 –number-nonblank：和 -n 相似，只不过对于空白行不编号。</p>
@@ -452,7 +451,7 @@
 <li>1.1.8 再次运行 git status -sb，可以看到 ?? 变成了 A      <br>  Initial commit on master      <br>  A  css/style.css      <br>  A  index.html      <br>A 的意思就是添加，也就是说你告诉 git，这些文件我要加到仓库里</li>
 <li>1.1.9 使用 git commit -m “信息” 将你 add 过的内容「正式提交」到本地仓库（.git就是本地仓库），并添加一些注释信息，方便日后查阅。      <br><br>i. 你可以一个一个地 commit.          <br>  git commit index.html -m ‘添加index.html’          <br>  git commit css/style.css -m “添加 css/style.css”      <br>ii. 你也可以一次性 commit.          <br>git commit . -m “添加了几个文件”.</li>
 <li>1.1.10 再次运行 git status -sb，发现没有文件变动了，这是因为文件的变动已经记录在仓库里了。</li>
-<li>1.1.11 这时你使用 git log 就可以看到历史上的变动：          <br>commit f0d95058cd32a332b98967f6c0a701c64a00810a<br>Author: frankfang <a href="mailto:&#x66;&#x72;&#x61;&#x6e;&#x6b;&#x66;&#97;&#110;&#103;&#x31;&#57;&#x39;&#48;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#x6d;" target="_blank" rel="noopener">&#x66;&#x72;&#x61;&#x6e;&#x6b;&#x66;&#97;&#110;&#103;&#x31;&#57;&#x39;&#48;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#x6d;</a><br>Date:   Thu Sep 28 22:30:43 2017 +0800            <br>添加几个文件</li>
+<li>1.1.11 这时你使用 git log 就可以看到历史上的变动：          <br>commit f0d95058cd32a332b98967f6c0a701c64a00810a<br>Author: frankfang <a href="mailto:&#102;&#114;&#x61;&#x6e;&#107;&#102;&#97;&#x6e;&#103;&#49;&#x39;&#57;&#x30;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;" target="_blank" rel="noopener">&#102;&#114;&#x61;&#x6e;&#107;&#102;&#97;&#x6e;&#103;&#49;&#x39;&#57;&#x30;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a><br>Date:   Thu Sep 28 22:30:43 2017 +0800            <br>添加几个文件</li>
 <li>1.1.12 以上就是 git add / git commit 的一次完整过程，可以看到，挺复杂的，需要多次练习熟记于心。</li>
 </ul>
 </li>
