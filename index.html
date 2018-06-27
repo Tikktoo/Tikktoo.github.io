@@ -450,7 +450,7 @@
 <li>1.1.8 再次运行 git status -sb，可以看到 ?? 变成了 A      <br>  Initial commit on master      <br>  A  css/style.css      <br>  A  index.html      <br>A 的意思就是添加，也就是说你告诉 git，这些文件我要加到仓库里</li>
 <li>1.1.9 使用 git commit -m “信息” 将你 add 过的内容「正式提交」到本地仓库（.git就是本地仓库），并添加一些注释信息，方便日后查阅。      <br><br>i. 你可以一个一个地 commit.          <br>  git commit index.html -m ‘添加index.html’          <br>  git commit css/style.css -m “添加 css/style.css”      <br>ii. 你也可以一次性 commit.          <br>git commit . -m “添加了几个文件”.</li>
 <li>1.1.10 再次运行 git status -sb，发现没有文件变动了，这是因为文件的变动已经记录在仓库里了。</li>
-<li>1.1.11 这时你使用 git log 就可以看到历史上的变动：          <br>commit f0d95058cd32a332b98967f6c0a701c64a00810a<br>Author: frankfang <a href="mailto:&#x66;&#x72;&#97;&#x6e;&#x6b;&#x66;&#97;&#x6e;&#103;&#x31;&#x39;&#57;&#x30;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;" target="_blank" rel="noopener">&#x66;&#x72;&#97;&#x6e;&#x6b;&#x66;&#97;&#x6e;&#103;&#x31;&#x39;&#57;&#x30;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a><br>Date:   Thu Sep 28 22:30:43 2017 +0800            <br>添加几个文件</li>
+<li>1.1.11 这时你使用 git log 就可以看到历史上的变动：          <br>commit f0d95058cd32a332b98967f6c0a701c64a00810a<br>Author: frankfang <a href="mailto:&#102;&#x72;&#x61;&#110;&#x6b;&#102;&#x61;&#110;&#103;&#49;&#57;&#57;&#x30;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;" target="_blank" rel="noopener">&#102;&#x72;&#x61;&#110;&#x6b;&#102;&#x61;&#110;&#103;&#49;&#57;&#57;&#x30;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a><br>Date:   Thu Sep 28 22:30:43 2017 +0800            <br>添加几个文件</li>
 <li>1.1.12 以上就是 git add / git commit 的一次完整过程，可以看到，挺复杂的，需要多次练习熟记于心。</li>
 </ul>
 </li>
@@ -466,125 +466,6 @@
 <li>2.7 再次运行 git status -sb，会发现没有变更了，这说明所有变动都被本地仓库记录在案了。<br>这里来透露一下 git status -sb 是什么意思：git status 是用来显示当前的文件状态的，哪个文件变动了，方便你进行 git add 操作。-sb 选项的意思就是，SB都能看懂，哈，这是开玩笑，-s 的意思是显示总结（summary），-b 的意思是显示分支（branch），所以 -sb 的意思是显示总结和分支。<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3>至此，我们来总结一下用到的命令<br>git init，初始化本地仓库 .git<br><br>git status -sb，显示当前所有文件的状态<br><br>git add 文件路径，用来将变动加到暂存区<br><br>git commit -m “信息”，用来正式提交变动，提交至 .git 仓库<br>如果有新的变动，我们只需要依次执行 git add xxx 和 git commit -m ‘xxx’ 两个命令即可。别看本教程废话那么多，其实就这一句有用！先 add 再 commit，行了，你学会 git 了。<br>git log 查看变更历史.</li>
 </ul>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shi qiang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Martin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/25/test/" itemprop="url">测试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T10:55:20+08:00">
-                2018-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -912,7 +793,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -920,15 +801,6 @@
 
             
 
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">tags</span>
-                
-              </div>
             
 
           </nav>
