@@ -79,13 +79,25 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Martin">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="一、水平居中(1)文本/行内/行内块级▲原理：text-align只控制行内内容(文字、行内元素、行内块级元素)如何相对他的块父元素对齐 1#parent&amp;#123;text-align: center;&amp;#125; 优缺点  优点：简单快捷，容易理解，兼容性非常好  缺点：只对行内内容有效；属性会继承影响到后代行内内容；如果子元素宽度大于父元素宽度则无效，但是后代行内内容中宽度小于设置text-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS布局及布局小技巧">
+<meta property="og:url" content="http://yoursite.com/2018/08/08/CSS布局及布局小技巧/index.html">
 <meta property="og:site_name" content="Martin">
+<meta property="og:description" content="一、水平居中(1)文本/行内/行内块级▲原理：text-align只控制行内内容(文字、行内元素、行内块级元素)如何相对他的块父元素对齐 1#parent&amp;#123;text-align: center;&amp;#125; 优缺点  优点：简单快捷，容易理解，兼容性非常好  缺点：只对行内内容有效；属性会继承影响到后代行内内容；如果子元素宽度大于父元素宽度则无效，但是后代行内内容中宽度小于设置text-">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/8192053-fd94b0f6660e0a9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/8192053-c62fee793ff890df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/8192053-939d5de8570ac3a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/8192053-7a3e44050ff89cfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/8192053-2a21c66c4dad4f56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/8192053-0686025b23db6b21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/8192053-f0d306a6a14f995c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-08-08T01:09:46.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Martin">
+<meta name="twitter:title" content="CSS布局及布局小技巧">
+<meta name="twitter:description" content="一、水平居中(1)文本/行内/行内块级▲原理：text-align只控制行内内容(文字、行内元素、行内块级元素)如何相对他的块父元素对齐 1#parent&amp;#123;text-align: center;&amp;#125; 优缺点  优点：简单快捷，容易理解，兼容性非常好  缺点：只对行内内容有效；属性会继承影响到后代行内内容；如果子元素宽度大于父元素宽度则无效，但是后代行内内容中宽度小于设置text-">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/8192053-fd94b0f6660e0a9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -115,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/08/CSS布局及布局小技巧/"/>
 
 
 
 
 
-  <title>Martin</title>
+  <title>CSS布局及布局小技巧 | Martin</title>
   
 
 
@@ -140,8 +152,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,9 +225,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -246,9 +257,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/08/CSS布局及布局小技巧/" itemprop="url">CSS布局及布局小技巧</a></h1>
+          <h1 class="post-title" itemprop="name headline">CSS布局及布局小技巧</h1>
         
 
         <div class="post-meta">
@@ -298,9 +307,7 @@
       
 
       
-        
-          
-            <h3 id="一、水平居中"><a href="#一、水平居中" class="headerlink" title="一、水平居中"></a>一、水平居中</h3><h4 id="1-文本-行内-行内块级▲"><a href="#1-文本-行内-行内块级▲" class="headerlink" title="(1)文本/行内/行内块级▲"></a>(1)文本/行内/行内块级▲</h4><p>原理：text-align只控制行内内容(文字、行内元素、行内块级元素)如何相对他的块父元素对齐</p>
+        <h3 id="一、水平居中"><a href="#一、水平居中" class="headerlink" title="一、水平居中"></a>一、水平居中</h3><h4 id="1-文本-行内-行内块级▲"><a href="#1-文本-行内-行内块级▲" class="headerlink" title="(1)文本/行内/行内块级▲"></a>(1)文本/行内/行内块级▲</h4><p>原理：text-align只控制行内内容(文字、行内元素、行内块级元素)如何相对他的块父元素对齐</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;text-align: center;&#125;</span><br></pre></td></tr></table></figure>
 <p>优缺点</p>
 <ul>
@@ -647,8 +654,6 @@
 <p>css代码:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#header&#123;</span><br><span class="line">    height: 60px;</span><br><span class="line">    background-color: #ccc;</span><br><span class="line">&#125;</span><br><span class="line">#parent &#123;</span><br><span class="line">    box-sizing: border-box;</span><br><span class="line">    height: 500px;</span><br><span class="line">    padding: 0 215px 0 115px;  /*为了使#center摆正,左右padding分别等于左右盒子的宽,可以结合左右盒子相对定位的left调整间距*/</span><br><span class="line">&#125;</span><br><span class="line">#left &#123;</span><br><span class="line">    margin-left: -100%;  /*使#left上去一行*/</span><br><span class="line">    position: relative;</span><br><span class="line">    left: -115px;  /*相对定位调整#left的位置,正值大于或等于自身宽度*/</span><br><span class="line">    float: left;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">    opacity: 0.5;</span><br><span class="line">&#125;</span><br><span class="line">#center &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 100%;  /*由于#parent的padding,达到自适应的目的*/</span><br><span class="line">    height: 500px;</span><br><span class="line">    box-sizing: border-box;</span><br><span class="line">    border: 1px solid #000;</span><br><span class="line">    background-color: #eeff2b;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    left: 215px; /*相对定位调整#right的位置,大于或等于自身宽度*/</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    margin-left: -200px;  /*使#right上去一行*/</span><br><span class="line">    float: left;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">    opacity: 0.5;</span><br><span class="line">&#125;</span><br><span class="line">#footer&#123;</span><br><span class="line">    height: 60px;</span><br><span class="line">    background-color: #ccc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
     
@@ -665,213 +670,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/16/HTML常用标签/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shi qiang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Martin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/16/HTML常用标签/" itemprop="url">HTML 常用标签</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-16T21:27:36+08:00">
-                2018-07-16
-              </time>
+              <a href="/2018/07/16/HTML常用标签/" rel="next" title="HTML 常用标签">
+                <i class="fa fa-chevron-left"></i> HTML 常用标签
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>HTML（超文本标记语言——HyperText Markup Language）是构成 Web 世界的一砖一瓦。它通常描述并定义了一个网页的内容和基本布局。我们先来看一下HTML合规范的基本结构：</p>
-<pre><code>&lt;!DOCTYPE html&gt;   &lt;!-- 声明文档类型是html5 --&gt;
-&lt;html&gt;            &lt;!-- 根元素 --&gt;
-    &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;        &lt;!-- 这个元素设置文档使用utf-8字符集编码 --&gt;
-    &lt;title&gt;Document&lt;/title&gt;        &lt;!-- 设置页面标题，出现在浏览器标签上 --&gt;
-    &lt;/head&gt;
-    &lt;body&gt;    
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><h3 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h3><ol>
-<li><p>标题标签<br><code>&lt;h1&gt;&lt;/h1&gt;  , &lt;h2&gt;&lt;/h2&gt; , &lt;h3&gt;&lt;/h3&gt;, &lt;h4&gt;&lt;/h4&gt;, &lt;h5&gt;&lt;/h5&gt;, &lt;h6&gt;&lt;/h6&gt;</code><br>分别是六级标题的样式.</p>
-</li>
-<li><p>段落标签<br></p><p></p> paragraph 段落标签<br>顾名思义，这是一个定义段落的标签，是一个块级元素。<p></p>
-<p><code>&lt;p&gt;这是一个段落&lt;/p&gt;</code></p>
-</li>
-<li><p>div span 标签<br>这两个标签没有实际语义，我们可以把他们看做盒子，通常用来网页布局<br><code>&lt;div&gt;&lt;/div&gt;
-&lt;span&gt;&lt;/span&gt;</code></p>
-</li>
-<li><p>em和strong标签<br>strong和em（emphasis)语义都是强调，在HTML5中，strong这个元素强调内容非常重要！(strong importance for its contents) 对比于html4仅是一个简单的强调，语义更加加重了。Em标签(Emphasis)用于改变一个句子的意思(比如”我<em>喜欢</em>胡萝卜” 和”我喜欢<em>胡萝卜</em>“，分别强调喜欢和胡萝卜), <strong>Strong用来对一个句子的部分增加重要性</strong>(比如 “警告! 这非常危险。”)<br>Strong和Emphasis都可以分别通过嵌套来增加相对重要性或强调重点。em标签的显示方式是内容倾斜，strong标签的显示方式则是加粗。相对的同样也有无语义的，仅仅是物理状态的倾斜和加粗。</p>
-</li>
-<li><p>img标签<br>HTML Image 元素（ <img> ）代表文档中的一个图像。</p>
-<p><code>&lt;img src =&quot;&quot; alt = &quot;&quot;&gt;</code><br>src属性是用于指定图像文件的路径和文件名，是img的必要属性。<br>alt属性定义了描述图像的替换文本。即图片加载不出来或出现错误的时候，我们将看到这个显示。<br>img标签是一个空标签，没有内容，没有结束标签。<br>img标签是一个可替换标签，它的展现不由css控制，是外观渲染独立于css的外部对象。</p>
-</li>
-<li><p>iframe标签<br>①嵌套一个网页进去</p>
-</li>
-</ol>
-<p>如图所示，我们的页面上就会多一个窗口链接到我们输入的地址的网页<br>frameborder是iframe的边框，非常丑，我们默认不要他吧</p>
-<p> ②name属性和a标签一起用<br>    比如我们给iframe一个name，然后a标签的target等于这个name，我们就可以使a标签所跳转的页面在当前页面iframe的窗口打开了。</p>
-<p>这样我们无论是点击qq还是百度，都可以在当前窗口打开了</p>
-<ol start="7">
-<li><p>a标签 （HTTP GET请求）</p>
-<p>anchor的缩写，<code>&lt;a&gt;</code> 元素 (或锚元素) 可以创建一个到其他网页、文件、同一页面内的位置、电子邮件地址或任何其他URL的超链接。<br><code>&lt;a href =&quot;http://qq.com&quot; target=&quot;_blank&quot;&gt;</code></p>
-</li>
-</ol>
-<p>①href属性是必需属性，定义一个超文本链接来源<br>注意：我们如果输入//qq.com,这是一个无协议相对地址，那么当前什么协议，就是什么协议，所以我们打开会是file://qq.com,但是我们不常用file协议，容易出错，那我们如何预览我们的index.html呢？</p>
-<p>1.1.1  上传到github,用github 预览功能<br>1.1.2  npm i -g http-server 下载这个小工具<br>    每次运行的时候</p>
-<p><code>http-server . -c -1</code></p>
-<p>这样我们尽管<a href="//qq.com">QQ</a>,是无协议相对地址，但由于当前已经在http协议下，我们就可以http协议访问了</p>
-<p>1.2 注意：当href=”#” 时不是GET请求，因为锚点定位，只是当前页面的跳转<br>可以使用href=”#top”或者href=”#”链接返回到页面顶部。</p>
-<p>1.3.1 想要点击a标签，执行一段 javascript 代码</p>
-<p><code>&lt;a href=&quot;javascript:alert(1)&quot;&gt;&lt;/a&gt;</code></p>
-<p>1.3.2 伪协议可以实现「点击之后没有任何动作的 a 标签」，满足这种奇葩需求</p>
-<p><code>&lt;a href=&quot;javascript:;&quot;&gt;&lt;/a&gt;</code></p>
-<p>②target属性</p>
-<p>target=_blank 新窗口打开</p>
-<p>target=_self 默认，在自己当前页面打开</p>
-<p>target=_parent 在父页面打开</p>
-<p>target=_top 在最上层页面打开</p>
-<p>结合iframe理解即可</p>
-<p>③download属性</p>
-<p><code>&lt;a href =&quot;http://qq.com&quot; download &gt;下载&lt;/a&gt;</code></p>
-<p>此属性指示浏览器下载URL而不是导航到URL，因此将提示用户将其保存为本地文件。<br>注意：如果HTTP的Content-Disposition：存在,并且赋予了一个和这个属性不同的文件名，HTTP会优先于此属性。</p>
-<ol start="8">
-<li>form标签（HTTP POST请求）<br>form标签与a标签一样，是发起了页面跳转，但是两者的区别是，form标签发起的是post请求，而a标签是get请求。</li>
-</ol>
-<p>①form标签中必须要有提交按钮</p>
-<p>②form是用来发送post请求，常见于我们登录时，比如我们上图就是一个登陆的界面，那我们提交后，看看是不是发送了post的请求呢？</p>
-<p>确实是post请求，这里要注意，不要忘记method=post,否则提交上去还是get.</p>
-<p>③我们提交的内容，如果使用GET，他会默认的放在查询参数里，如图：</p>
-<p>我的name和密码都被默认为查询参数了，那如果是post呢？</p>
-<p>post会把参数默认的放在请求的第四部分，还记得我们之前讲到请求的第四部分是什么吗，是我们上传的数据。</p>
-<p>④form也有target属性，与a 标签用法一致~就不再赘述了~</p>
-<ol start="9">
-<li>input 标签<br>用法很多，详细的去查MDN文档~<br>①type属性值为text, 单行字段；换行会将自动从输入的值中移除。<br>type属性值为password，顾名思义，密码，一个值被遮盖的单行文本字段。</li>
-</ol>
-<p>②type属性为radio 单选框，但必须命名到一组</p>
-<p>③ type属性为checkbox 复选框 也要name到一组</p>
-<p>④ <code>&lt;button&gt;</code><br> <code>&lt;button&gt;</code>很有意思，如果没有type属性，也没有submit，比如：<br><code>&lt;button&gt;button&lt;/button&gt;</code><br>那么此时的button会自动升级成提交按钮，而如果<br><code>&lt;input type=&quot;button&quot; value=&quot;button&quot;&gt;</code><br><code>&lt;button type=&quot;button&quot;&gt;按钮&lt;/button&gt;</code><br>这两种情况下，button只是普通按钮。</p>
-<ol start="10">
-<li>label标签<br>常用于把label和表单元素绑定在一起，比如用label把用户名和输入框连在一起，那么当我们点击用户名时，输入框就会获得输入焦点.</li>
-</ol>
-<p><code>&lt;label&gt;用户名&lt;input type=&quot;text&quot;&gt;&lt;/label&gt;</code></p>
-<ol start="11">
-<li>select<br>select是一个表单控件，我们可以通俗的叫他下拉菜单，菜单下跟着<option>选项</option></li>
-</ol>
-<p>disabled意思为不可选，即第三组不可选择<br>selected意思为默认被选择项，如图上自动选择在第四组上<br>multiple意思为可以选择多个选项，</p>
-<p>我已经选择了二四五组，但是第三组由于disabled，不可选~</p>
-<ol start="12">
-<li>table 标签</li>
-</ol>
-<p>很多人会不知道 colgroup ，它可以用来给 table 列表加宽度等属性，如图可清楚的看到这一状态<br>thead tbody tfoot 三个标签可以省略，但是加上的话会使语义更完整，既是顺序发生变化也浏览器也可以根据这三个标签还原成员列表。<br>border-collapse可以合并两个相邻的边框线，使中间没有空隙，更加美观一点。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -881,764 +701,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/30/HTTP请求与响应/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shi qiang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Martin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/30/HTTP请求与响应/" itemprop="url">HTTP请求与响应</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-30T12:52:56+08:00">
-                2018-06-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="HTTP请求包括哪些部分"><a href="#HTTP请求包括哪些部分" class="headerlink" title="HTTP请求包括哪些部分"></a>HTTP请求包括哪些部分</h2><ul>
-<li>1 动词 路径 协议/版本</li>
-<li>2 Key1: value1</li>
-<li>2 Key2: value2</li>
-<li>2 Key3: value3</li>
-<li>2 Content-Type: pplication/x-www-form-urlencoded</li>
-<li>2 Host: <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></li>
-<li>2 User-Agent: curl/7.54.0</li>
-<li>3</li>
-<li>4 要上传的数据</li>
-</ul>
-<h3 id="请求的格式"><a href="#请求的格式" class="headerlink" title="请求的格式"></a>请求的格式</h3><ul>
-<li>0 请求最多包含四部分，最少包含三部分。（也就是说第四部分可以为空）</li>
-<li>1 第三部分永远都是一个回车（\n）</li>
-<li>2 动词有 GET POST PUT PATCH DELETE HEAD OPTIONS 等</li>
-<li>3 这里的路径包括「查询参数」，但不包括「锚点」</li>
-<li>4 如果你没有写路径，那么路径默认为 /</li>
-<li>5 第 2 部分中的 Content-Type 标注了第 4 部分的格式。</li>
-</ul>
-<h3 id="用Chrome发请求"><a href="#用Chrome发请求" class="headerlink" title="用Chrome发请求"></a>用Chrome发请求</h3><ul>
-<li>1 打开 Network</li>
-<li>2 地址栏输入网址</li>
-<li>3 在 Network 点击，查看 request，点击「view source」</li>
-<li>4 点击「view source」</li>
-<li>5 点击「view source」</li>
-<li>6 点击「view source」</li>
-<li>7 终于点了？可以看到请求的前三部分了</li>
-<li>8 如果有请求的第四部分，那么在 FormData 或 Payload 里面可以看到</li>
-</ul>
-<h2 id="HTTP响应包括哪些部分"><a href="#HTTP响应包括哪些部分" class="headerlink" title="HTTP响应包括哪些部分"></a>HTTP响应包括哪些部分</h2><ul>
-<li>1 协议/版本号 状态码 状态解释</li>
-<li>2 Key1: value1</li>
-<li>2 Key2: value2</li>
-<li>2 Content-Length: 17931</li>
-<li>2 Content-Type: text/html</li>
-<li>3</li>
-<li><p>4 要下载的内容</p>
-</li>
-<li><p>状态码要背，是服务器对浏览器说的话</p>
-<ul>
-<li>1xx 不常用</li>
-<li>2xx 表示成功</li>
-<li>3xx 表示滚吧</li>
-<li>4xx 表示你丫错了</li>
-<li>5xx 表示好吧，我错了</li>
-</ul>
-</li>
-<li>状态解释没什么用</li>
-<li>第 2 部分中的 Content-Type 标注了第 4 部分的格式</li>
-<li>第 2 部分中的 Content-Type 遵循 MIME 规范</li>
-</ul>
-<h3 id="用-Chrome-查看响应"><a href="#用-Chrome-查看响应" class="headerlink" title="用 Chrome 查看响应"></a>用 Chrome 查看响应</h3><ul>
-<li><ol>
-<li>打开 Network</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>输入网址</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>选中第一个响应</li>
-</ol>
-</li>
-<li><ol start="4">
-<li>查看 Response Headers，点击「view source」，点击「view source」，点击「view source」</li>
-</ol>
-</li>
-<li><ol start="5">
-<li>你会看到响应的前两部分</li>
-</ol>
-</li>
-<li><ol start="6">
-<li>查看 Response 或者 Preview，你会看到响应的第 4 部分</li>
-</ol>
-</li>
-</ul>
-<p>##curl命令的基本使用</p>
-<p>&amp;nbsp curl是基于URL语法在命令行方式下工作的文件传输工具，它支持FTP，FTPS，HTTP，HTTPS，GOPHER，TELNET，DICT，FILE及LDAP等协议。curl支持HTTPS认证，并且支持HTTP的POST,PUT等方法，FTP上传，kerberos认证，HTTP上传，代理服务器，cookies，用户名/密码认证，通过http代理服务器上传文件到FTP服务器等等，功能十分强大。</p>
-<h3 id="一-curl的常用选项："><a href="#一-curl的常用选项：" class="headerlink" title="一.curl的常用选项："></a>一.curl的常用选项：</h3><ul>
-<li>1     -A/–user-agent <string> 设置用户代理发送给服务器，即告诉服务器浏览器为什么</string></li>
-<li>2     -basic 使用HTTP基本验证</li>
-<li>3     –tcp-nodelay 使用TCP_NODELAY选项</li>
-<li>4     -e/–referer <url> 来源网址，跳转过来的网址</url></li>
-<li>5     –cacert <file> 指定CA证书 (SSL)</file></li>
-<li>6     –compressed 要求返回是压缩的形势，如果文件本身为一个压缩文件，则可以下载至本地</li>
-<li>7     -H/–header <line></line>自定义头信息传递给服务器</li>
-<li>8     -I/–head 只显示响应报文首部信息</li>
-<li>9     –limit-rate <rate> 设置传输速度</rate></li>
-<li>10     -u/–user &lt;user[:password]&gt;设置服务器的用户和密码</li>
-<li>11     -0/–http1.0 使用HTTP 1.0</li>
-</ul>
-<h3 id="curl命令用法介绍"><a href="#curl命令用法介绍" class="headerlink" title="curl命令用法介绍"></a>curl命令用法介绍</h3><ul>
-<li>1.-I选项，只获得对方的响应首部信息；</li>
-</ul>
-<p>　　这个参数在很多时候都很有用，比方说，我们实现了代理服务器并在代理服务器上手动自定义了一些首部的话，使用curl这个工具的“-I”选项可以很容易的探测出我们的代理服务器是否正确添加了我们自定义的首部。</p>
-<ul>
-<li>2.-A,设置用户代理发送给服务器,即可以伪装客户<br>端身份</li>
-<li>3.-e，伪装<url> 来源网址，跳转过来的网址</url></li>
-<li>4.访问一个网页</li>
-<li>5.显示http response的头信息</li>
-<li>6.显示一次的http请求的通信过程</li>
-<li>7.Curl执行GET/POST/PUT/DELETE操作</li>
-</ul>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/27/常见命令及explainshell.com 网站简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shi qiang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Martin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/27/常见命令及explainshell.com 网站简介/" itemprop="url">ls cat mv touch 如何使用以及 explainshell.com 网站简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-27T22:12:22+08:00">
-                2018-06-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>显示指定目录下的文件和目录，默认为当前目录。</p>
-<p>-a 显示所有文件及目录 (ls内定将文件名或目录名称开头为”.”的视为隐藏档，不会列出)<br><br>-l 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出<br><br>-r 将文件以相反次序显示(原定依英文字母次序)<br><br>-t 将文件依建立时间之先后次序列出<br><br>-A 同 -a ，但不列出 “.” (目前目录) 及 “..” (父目录)<br><br>-F 在列出的文件名称后加一符号；<br><br>-R 若目录下有文件，则以下之文件亦皆依序列出</p>
-<h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><p>用来查看文件内容。</p>
-<p>-n 或 –number：由 1 开始对所有输出的行数编号。<br><br>-b 或 –number-nonblank：和 -n 相似，只不过对于空白行不编号。</p>
-<h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2><p> 移动文件，可用来重命名文件。</p>
-<p> -i：交互式。<br><br> -f：强制覆盖文件。</p>
-<h2 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h2><p> 修改时间戳，文件不存在则创建文件,当直接使用命令去touch一个文件的时候，修改的是所有的时间戳。</p>
-<p> -c：指定的文件路径不存在时不予以创建。<br><br> -a：仅修改access time.<br><br> -m：仅修改modify time.</p>
-<h2 id="如何使用explainshell-com-？"><a href="#如何使用explainshell-com-？" class="headerlink" title="如何使用explainshell.com ？"></a>如何使用explainshell.com ？</h2><p> 当我们不知道某个命令是什么意思的时候，又不愿意去查看man手册的时候，就可以使用这个网站了，简洁明了<del>~</del>~（前提要是能FQ）。<br> <img src="\Users\Public\Pictures" alt="avatar"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/27/Git的使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shi qiang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Martin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/27/Git的使用/" itemprop="url">Git入门及简单使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-27T14:33:07+08:00">
-                2018-06-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用Git有三种方式，我们可以按照自己的需求进行选择。</p>
-<h2 id="1-只在本地使用。"><a href="#1-只在本地使用。" class="headerlink" title="1.只在本地使用。"></a>1.只在本地使用。</h2><ul>
-<li>1.1 初始化<ul>
-<li>1.1.1 创建目录作为我们的项目目录：mkdir git-dome-1</li>
-<li>1.1.2 进入目录: cd git-demo-1</li>
-<li>1.1.3 gitinit，这句命令会在git-demo-1里创建一个。git目录</li>
-<li>1.1.4 ls -la 你就会看到.git目录，它就是一个[仓库]，不要点进去。</li>
-<li>1.1.5 在 git-demo-1 目录里面添加任意文件，假设我们添加了两个文件，分别是 index.html 和 css/style.css。<ul>
-<li>i.  touch index.html</li>
-<li>ii. mkdir css</li>
-<li>iii. touch css/style.css</li>
-<li>1.1.6 运行 git status -sb 可以看到文件前面有 ?? 号。<br>## Initial commit on master<br>?? css/      <br>?? index.html<br>这个 ?? 表示 git 一脸懵逼，不知道你要怎么对待这些变动。</li>
-</ul>
-</li>
-<li>1.1.7 使用 git add 将文件添加到「暂存区」<ul>
-<li>i. 你可以一个一个地add      <br> a. git add index.html       <br>b. git add css/style.css</li>
-<li>ii. 你也可以一次性 add      <br> a. git add . 意思是把当前目录（.表示当前目录）里面的变动都加到「暂存区」</li>
-</ul>
-</li>
-<li>1.1.8 再次运行 git status -sb，可以看到 ?? 变成了 A      <br>  Initial commit on master      <br>  A  css/style.css      <br>  A  index.html      <br>A 的意思就是添加，也就是说你告诉 git，这些文件我要加到仓库里</li>
-<li>1.1.9 使用 git commit -m “信息” 将你 add 过的内容「正式提交」到本地仓库（.git就是本地仓库），并添加一些注释信息，方便日后查阅。      <br><br>i. 你可以一个一个地 commit.          <br>  git commit index.html -m ‘添加index.html’          <br>  git commit css/style.css -m “添加 css/style.css”      <br>ii. 你也可以一次性 commit.          <br>git commit . -m “添加了几个文件”.</li>
-<li>1.1.10 再次运行 git status -sb，发现没有文件变动了，这是因为文件的变动已经记录在仓库里了。</li>
-<li>1.1.11 这时你使用 git log 就可以看到历史上的变动：          <br>commit f0d95058cd32a332b98967f6c0a701c64a00810a<br>Author: frankfang <a href="mailto:&#x66;&#114;&#97;&#x6e;&#x6b;&#x66;&#97;&#x6e;&#103;&#49;&#x39;&#57;&#48;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;" target="_blank" rel="noopener">&#x66;&#114;&#97;&#x6e;&#x6b;&#x66;&#97;&#x6e;&#103;&#49;&#x39;&#57;&#48;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;</a><br>Date:   Thu Sep 28 22:30:43 2017 +0800            <br>添加几个文件</li>
-<li>1.1.12 以上就是 git add / git commit 的一次完整过程，可以看到，挺复杂的，需要多次练习熟记于心。</li>
-</ul>
-</li>
-</ul>
-<h2 id="2-将本地仓库上传到Github"><a href="#2-将本地仓库上传到Github" class="headerlink" title="2.将本地仓库上传到Github."></a>2.将本地仓库上传到Github.</h2><p>  如果我想继续改文件，应该怎么做呢？</p>
-<ul>
-<li>2.1 start css/style.css 会使用默认的编辑器打开 css/style.css（macOS 上对应的命令是 open css/style.css）</li>
-<li>2.2 然后我们在 css/style.css 里写入 body {background: red}，保存退出</li>
-<li>2.3 运行 git status -sb 发现提示中有一个 M<br>## master<br>M css/style.css<br>这个 M 的意思就是 Modified，表示这个文件被修改了&gt;</li>
-<li>2.4 此时你如果想让改动保存到仓库里，你需要先 git add css/style.css 或者也可以 git add .<br>注意，由于这个 css/style.css 以前被我们 add 过，你往文章上面看，我们是 add 过 css/style.css 的，所以此处的 git add 操作可以省略，但我建议你使用 git 的前一个月，不要省略 git add。<br>换句话说，每一次改动，都要经过 git add 和 git commit 两个命令，才能被添加到 .git 本地仓库里。</li>
-<li>2.5 再次运行 git status -sb 发现 M 有红色变成了绿色，红色和绿色有啥区别呢？别管它们的区别，记住我说的，先 add，再 commit，等你熟练之后再去理解区别。<br>先形成肌肉记忆，在去形成大脑记忆！</li>
-<li>2.6 运行 git commit -m “更新 css/style.css”，这个改动就被提交到 .git 本地仓库了。再说一次，不要去 .git 目录里面，那里的东西你一无所知。</li>
-<li>2.7 再次运行 git status -sb，会发现没有变更了，这说明所有变动都被本地仓库记录在案了。<br>这里来透露一下 git status -sb 是什么意思：git status 是用来显示当前的文件状态的，哪个文件变动了，方便你进行 git add 操作。-sb 选项的意思就是，SB都能看懂，哈，这是开玩笑，-s 的意思是显示总结（summary），-b 的意思是显示分支（branch），所以 -sb 的意思是显示总结和分支。<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3>至此，我们来总结一下用到的命令<br>git init，初始化本地仓库 .git<br><br>git status -sb，显示当前所有文件的状态<br><br>git add 文件路径，用来将变动加到暂存区<br><br>git commit -m “信息”，用来正式提交变动，提交至 .git 仓库<br>如果有新的变动，我们只需要依次执行 git add xxx 和 git commit -m ‘xxx’ 两个命令即可。别看本教程废话那么多，其实就这一句有用！先 add 再 commit，行了，你学会 git 了。<br>git log 查看变更历史.</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/开博大吉/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shi qiang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Martin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/25/开博大吉/" itemprop="url">开博大吉</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T10:11:46+08:00">
-                2018-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shi qiang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Martin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/25/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T10:09:47+08:00">
-                2018-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -1646,6 +713,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1666,8 +737,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1709,6 +789,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、水平居中"><span class="nav-number">1.</span> <span class="nav-text">一、水平居中</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-文本-行内-行内块级▲"><span class="nav-number">1.1.</span> <span class="nav-text">(1)文本/行内/行内块级▲</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-单个块级元素▲"><span class="nav-number">1.2.</span> <span class="nav-text">(2)单个块级元素▲</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-多个块级元素"><span class="nav-number">1.3.</span> <span class="nav-text">(3)多个块级元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-使用position实现▲"><span class="nav-number">1.4.</span> <span class="nav-text">(4)使用position实现▲</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-任意个元素-flex"><span class="nav-number">1.5.</span> <span class="nav-text">(5)任意个元素(flex)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#★本章小结："><span class="nav-number">1.6.</span> <span class="nav-text">★本章小结：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、垂直居中"><span class="nav-number">2.</span> <span class="nav-text">二、垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-单行文本-行内-行内块级▲"><span class="nav-number">2.1.</span> <span class="nav-text">(1)单行文本/行内/行内块级▲</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-多行文本-行内-行内块级"><span class="nav-number">2.2.</span> <span class="nav-text">(2)多行文本/行内/行内块级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-图片▲"><span class="nav-number">2.3.</span> <span class="nav-text">(3)图片▲</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-单个块级元素"><span class="nav-number">2.4.</span> <span class="nav-text">(4)单个块级元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-使用tabel-cell实现"><span class="nav-number">2.4.1.</span> <span class="nav-text">(1) 使用tabel-cell实现:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用position实现-▲"><span class="nav-number">2.4.2.</span> <span class="nav-text">(2) 使用position实现:▲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-使用flex实现"><span class="nav-number">2.4.3.</span> <span class="nav-text">(3) 使用flex实现:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-任意个元素-flex-1"><span class="nav-number">2.5.</span> <span class="nav-text">(5)任意个元素(flex)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#★本章小结：-1"><span class="nav-number">2.6.</span> <span class="nav-text">★本章小结：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、两列布局"><span class="nav-number">3.</span> <span class="nav-text">三、两列布局</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-左列定宽-右列自适应"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 左列定宽,右列自适应</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-利用float-margin▲"><span class="nav-number">3.1.1.</span> <span class="nav-text">(1)利用float+margin▲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-利用float-margin-fix"><span class="nav-number">3.1.2.</span> <span class="nav-text">(2)利用float+margin(fix)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-使用float-overflow▲"><span class="nav-number">3.1.3.</span> <span class="nav-text">(3)使用float+overflow▲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-使用table实现"><span class="nav-number">3.1.4.</span> <span class="nav-text">(4)使用table实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-使用position实现"><span class="nav-number">3.1.5.</span> <span class="nav-text">(5)使用position实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-使用flex实现"><span class="nav-number">3.1.6.</span> <span class="nav-text">(6)使用flex实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-左列自适应-右列定宽"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 左列自适应,右列定宽</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-使用float-margin▲"><span class="nav-number">3.2.1.</span> <span class="nav-text">(1)使用float+margin▲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用float-overflow▲"><span class="nav-number">3.2.2.</span> <span class="nav-text">(2)使用float+overflow▲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-使用table实现"><span class="nav-number">3.2.3.</span> <span class="nav-text">(3)使用table实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-使用position实现"><span class="nav-number">3.2.4.</span> <span class="nav-text">(4)使用position实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-使用flex实现"><span class="nav-number">3.2.5.</span> <span class="nav-text">(5)使用flex实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-使用Grid实现"><span class="nav-number">3.2.6.</span> <span class="nav-text">(6)使用Grid实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-一列不定-一列自适应"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 一列不定,一列自适应</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-使用float-overflow▲"><span class="nav-number">3.3.1.</span> <span class="nav-text">(1)使用float+overflow▲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用flex实现"><span class="nav-number">3.3.2.</span> <span class="nav-text">(2)使用flex实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-使用Grid实现"><span class="nav-number">3.3.3.</span> <span class="nav-text">(3)使用Grid实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#★本章小结：-2"><span class="nav-number">3.4.</span> <span class="nav-text">★本章小结：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、三列布局"><span class="nav-number">4.</span> <span class="nav-text">四、三列布局</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-两列定宽-一列自适应"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 两列定宽,一列自适应</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-使用float-margin"><span class="nav-number">4.1.1.</span> <span class="nav-text">(1)使用float+margin</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用float-overflow▲-1"><span class="nav-number">4.1.2.</span> <span class="nav-text">(2)使用float+overflow▲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-使用position实现▲"><span class="nav-number">4.1.3.</span> <span class="nav-text">(3)使用position实现▲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-使用table实现▲"><span class="nav-number">4.1.4.</span> <span class="nav-text">(4)使用table实现▲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-使用flex实现-1"><span class="nav-number">4.1.5.</span> <span class="nav-text">(5)使用flex实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-使用Grid实现-1"><span class="nav-number">4.1.6.</span> <span class="nav-text">(6)使用Grid实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-两侧定宽-中间自适应"><span class="nav-number">4.2.</span> <span class="nav-text">5.4 两侧定宽,中间自适应</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-1-双飞翼布局方法▲"><span class="nav-number">4.2.1.</span> <span class="nav-text">4.2.1 双飞翼布局方法▲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-2-圣杯布局方法"><span class="nav-number">4.2.2.</span> <span class="nav-text">4.2.2 圣杯布局方法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1849,6 +945,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
