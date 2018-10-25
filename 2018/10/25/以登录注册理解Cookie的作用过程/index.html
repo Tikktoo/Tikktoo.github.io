@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="以登录注册理解Cookie的作用过程Cookie在注册登录时的作用过程：过程：注册注册时把账号密码写入数据库 登录第一次登录时服务器给浏览器发送Cookie. 后台的登录路由代码(nodejs): 12345678910111213141516171819202122232425262728293031323334353637else if (path === &amp;apos;/sign_in&amp;apo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Martin">
+<meta property="og:url" content="http://yoursite.com/2018/10/25/以登录注册理解Cookie的作用过程/index.html">
+<meta property="og:site_name" content="Martin">
+<meta property="og:description" content="以登录注册理解Cookie的作用过程Cookie在注册登录时的作用过程：过程：注册注册时把账号密码写入数据库 登录第一次登录时服务器给浏览器发送Cookie. 后台的登录路由代码(nodejs): 12345678910111213141516171819202122232425262728293031323334353637else if (path === &amp;apos;/sign_in&amp;apo">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://segmentfault.com/img/bVbhGdq?w=943&h=544">
+<meta property="og:image" content="https://segmentfault.com/img/bVbhGdr?w=875&h=465">
+<meta property="og:image" content="https://segmentfault.com/img/bVbhGds?w=1189&h=1325">
+<meta property="og:image" content="https://segmentfault.com/img/bVbhJaG?w=841&h=428">
+<meta property="og:image" content="https://segmentfault.com/img/bVbhJa1?w=1077&h=1070">
+<meta property="og:image" content="https://image-static.segmentfault.com/269/812/2698121046-5b9bc1e20a4ba_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/410/641/4106417372-5baf73ddaef3e_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/236/619/2366198568-5baf39b6c0fa5_articlex">
+<meta property="og:updated_time" content="2018-10-25T12:41:39.895Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Martin">
+<meta name="twitter:description" content="以登录注册理解Cookie的作用过程Cookie在注册登录时的作用过程：过程：注册注册时把账号密码写入数据库 登录第一次登录时服务器给浏览器发送Cookie. 后台的登录路由代码(nodejs): 12345678910111213141516171819202122232425262728293031323334353637else if (path === &amp;apos;/sign_in&amp;apo">
+<meta name="twitter:image" content="https://segmentfault.com/img/bVbhGdq?w=943&h=544">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/25/以登录注册理解Cookie的作用过程/"/>
+
+
+
+
+
+  <title> | Martin</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Martin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/25/以登录注册理解Cookie的作用过程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shi qiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Martin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-25T20:43:35+08:00">
+                2018-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="以登录注册理解Cookie的作用过程"><a href="#以登录注册理解Cookie的作用过程" class="headerlink" title="以登录注册理解Cookie的作用过程"></a>以登录注册理解Cookie的作用过程</h1><h2 id="Cookie在注册登录时的作用过程："><a href="#Cookie在注册登录时的作用过程：" class="headerlink" title="Cookie在注册登录时的作用过程："></a>Cookie在注册登录时的作用过程：</h2><h2 id="过程："><a href="#过程：" class="headerlink" title="过程："></a>过程：</h2><h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>注册时把账号密码写入数据库</p>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>第一次登录时服务器给浏览器发送Cookie.</p>
+<p>后台的登录路由代码(nodejs):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">else if (path === &apos;/sign_in&apos; &amp;&amp; method === &apos;POST&apos;) &#123;</span><br><span class="line">        readBody(request).then((body) =&gt; &#123;</span><br><span class="line">            let strings = body.split(&apos;&amp;&apos;) // [&apos;email=1&apos;, &apos;password=2&apos;, &apos;password_confirmation=3&apos;]</span><br><span class="line">            let hash = &#123;&#125;</span><br><span class="line">            strings.forEach((string) =&gt; &#123;</span><br><span class="line">                // string == &apos;email=1&apos;</span><br><span class="line">                let parts = string.split(&apos;=&apos;) // [&apos;email&apos;, &apos;1&apos;]</span><br><span class="line">                let key = parts[0]</span><br><span class="line">                let value = parts[1]</span><br><span class="line">                hash[key] = decodeURIComponent(value) // hash[&apos;email&apos;] = &apos;1&apos;</span><br><span class="line">            &#125;)</span><br><span class="line">            let &#123;</span><br><span class="line">                email,</span><br><span class="line">                password</span><br><span class="line">            &#125; = hash</span><br><span class="line">            var users = fs.readFileSync(&apos;./db/users&apos;, &apos;utf8&apos;)</span><br><span class="line">            try &#123;</span><br><span class="line">                users = JSON.parse(users) // []</span><br><span class="line">            &#125; catch (exception) &#123;</span><br><span class="line">                users = []</span><br><span class="line">            &#125;</span><br><span class="line">            let found</span><br><span class="line">            for (let i = 0; i &lt; users.length; i++) &#123;</span><br><span class="line">                if (users[i].email === email &amp;&amp; users[i].password === password) &#123;</span><br><span class="line">                    found = true</span><br><span class="line">                    break</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if (found) &#123;//关键在这里,验证成功,设置登录Cookie为登录的邮箱,并放在响应里发给浏览器</span><br><span class="line">                response.setHeader(&apos;Set-Cookie&apos;, `sign_in_email=$&#123;email&#125;`)</span><br><span class="line">                response.statusCode = 200</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                response.statusCode = 401</span><br><span class="line">            &#125;</span><br><span class="line">            response.end()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>在登录成功的一瞬间,需要后台设置一个Cookie,记录一下登陆的用户id(这里用邮箱表示,代码在上面),然后发响应给浏览器<br>例如在服务器端设置响应头：<code>set-cookies：user_email=1@mtt.com</code></p>
+<p>这时候我们查看响应：</p>
+<p><img src="https://segmentfault.com/img/bVbhGdq?w=943&amp;h=544" alt="clipboard.png"></p>
+<p>发现响应头已经设置cookie.</p>
+<p><img src="https://segmentfault.com/img/bVbhGdr?w=875&amp;h=465" alt="clipboard.png"></p>
+<p>然后跳转到主页，这时候我们查看跳转到主页的请求：</p>
+<p><img src="https://segmentfault.com/img/bVbhGds?w=1189&amp;h=1325" alt="clipboard.png"></p>
+<p>发现跳转到主页的请求头中包含cookie字段(以后访问这个域名都会带着这个Cookie)!所以，就像上篇文章说的：</p>
+<p>如果服务器给了浏览器一个setcookie的响应头，那么这个浏览器以后所有的请求，只要是相同的源(即就是上次给我发送Cookie的那个域名,域名和端口相同)，那就么就会把当时服务器发给这个浏览器的Cookie带着</p>
+<blockquote>
+<p>以后，浏览器一旦访问这个路径，浏览器就会附上这段 Cookie 发送给服务器</p>
+</blockquote>
+<p>即:第一次请求,服务器为浏览器设置Cookie.下次请求,浏览器带上Cookie,发送给服务器.<br>第一次登录的时候,服务器给浏览器的响应设置一个Cookie,<code>set-cookies：user_email=1@mtt.com</code>,然后当浏览器下次进行请求的时候,发现Cookie中有名为User_email的Cookie,而且我发送请求的域名还是上次发给我带Cookie的响应的那个域名.</p>
+<p>那么就无需再次登录了.相当于服务器给浏览器发了进入门票,下次或下下次浏览器在进入服务器的时候给服务器看票就可以了</p>
+<h2 id="后台读取Cookie保留登录状态与删除Cookie退出登录状态"><a href="#后台读取Cookie保留登录状态与删除Cookie退出登录状态" class="headerlink" title="后台读取Cookie保留登录状态与删除Cookie退出登录状态"></a>后台读取Cookie保留登录状态与删除Cookie退出登录状态</h2><p>首页代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;我是首页&lt;/h1&gt;</span><br><span class="line">    &lt;div class=&quot;&quot;&gt;</span><br><span class="line">        &lt;a href=&quot;./sign_up&quot;&gt;注册&lt;/a&gt;</span><br><span class="line">        &lt;a href=&quot;./sign_in&quot;&gt;登录&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;h1&gt;你的状态是:__status__&lt;/h1&gt;</span><br><span class="line">    &lt;h1&gt;你的邮箱账号是:__email__&lt;/h1&gt;</span><br><span class="line">    &lt;h1&gt;你的密码是:__password__&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">    &lt;a href=&quot;javascript:;&quot; id=&quot;logOffBtn&quot;&gt;退出登录(删除cookie)&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">logOffBtn.addEventListener(&quot;click&quot;, () =&gt; &#123;</span><br><span class="line">        // 删除一个现存 Cookie 的唯一方法，是设置它的expires属性为一个过去的日期。</span><br><span class="line">        document.cookie = &apos;sign_in_email=;expires=Thu, 01-Jan-1970 00:00:01 GMT&apos;</span><br><span class="line">        window.location = &quot;/&quot;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>后台路由代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">if (path === &apos;/&apos;) &#123;</span><br><span class="line">        response.statusCode = 200</span><br><span class="line">        let string = fs.readFileSync(&apos;./index.html&apos;)</span><br><span class="line">        string = string.toString();</span><br><span class="line">        var users = fs.readFileSync(&apos;./db/users&apos;, &apos;utf8&apos;)</span><br><span class="line">        users = JSON.parse(users)//转化为user对象数组</span><br><span class="line"></span><br><span class="line">        console.log(users);</span><br><span class="line">        let cookies = request.headers.cookie || &apos;&apos;//[&apos;email=111&apos;, &apos;asdasd=111&apos;]</span><br><span class="line">        cookies = cookies.split(&quot;; &quot;)</span><br><span class="line">        let hash=&#123;&#125;</span><br><span class="line">        cookies.forEach((string)=&gt;&#123;</span><br><span class="line">            let parts = string.split(&quot;=&quot;)</span><br><span class="line">            let key = parts[0]</span><br><span class="line">            let value = parts[1]</span><br><span class="line">            hash[key] = value;</span><br><span class="line">        &#125;)</span><br><span class="line">        </span><br><span class="line">        let eamil = hash.sign_in_email</span><br><span class="line">        let foundedUser</span><br><span class="line">        users.forEach((userObj)=&gt;&#123;</span><br><span class="line">            if(userObj.email===eamil)&#123;</span><br><span class="line">                foundedUser = userObj;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        console.log(foundedUser);</span><br><span class="line">        if(foundedUser)&#123;</span><br><span class="line">            string = string.replace(&apos;__status__&apos;, &apos;已登录&apos;)</span><br><span class="line">            string = string.replace(&apos;__email__&apos;, foundedUser.email)</span><br><span class="line">            string = string.replace(&apos;__password__&apos;, foundedUser.password)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            string = string.replace(&apos;__status__&apos;, &apos;未登录,请去登录&apos;)</span><br><span class="line">            string = string.replace(&apos;__email__&apos;, &apos;没&apos;)</span><br><span class="line">            string = string.replace(&apos;__password__&apos;, &apos;没&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        response.setHeader(&apos;Content-Type&apos;, &apos;text/html;charset=utf-8&apos;)</span><br><span class="line">        response.write(string)</span><br><span class="line">        response.end()</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>在没有Cookie的时候,首页的状态</p>
+<p><img src="https://segmentfault.com/img/bVbhJaG?w=841&amp;h=428" alt="clipboard.png"></p>
+<p>登录之后,后台根据Cookie查询数据库,将用户名与密码传到前台的首页上</p>
+<p><img src="https://segmentfault.com/img/bVbhJa1?w=1077&amp;h=1070" alt="clipboard.png"></p>
+<p>退出登录将删除Cookie并刷新页面,重新回到未登录的状态</p>
+<h2 id="Cookie在登录的时候的特点"><a href="#Cookie在登录的时候的特点" class="headerlink" title="Cookie在登录的时候的特点"></a>Cookie在登录的时候的特点</h2><p>我们得到Cookie的特点:</p>
+<ol>
+<li>第一次登录的时候,服务器通过 Set-Cookie 响应头设置 Cookie,然后以响应的形式发给浏览器</li>
+<li>浏览器得到 响应中Cookie 之后，之后每次请求这个域名都要带上这个 Cookie</li>
+<li>之后服务器读取当时自己设置的 Cookie 就知道登录用户的信息（email）</li>
+</ol>
+<h2 id="几个关于Cookie的问题"><a href="#几个关于Cookie的问题" class="headerlink" title="几个关于Cookie的问题"></a>几个关于Cookie的问题</h2><p>1.我在 Chrome 登录了得到 Cookie，用 Safari 访问，Safari 会带上 Cookie 吗<br>no</p>
+<p>2.Cookie 存在哪<br>Windows 存在 C 盘的一个文件里</p>
+<p>3.Cookie会被用户篡改吗？<br>可以，例如在谷歌浏览器开发者模式下的application-&gt;Cookie中可以手动修改,修改之后,下次发送请求时,附带的就是修改后的Cookie</p>
+<p><img src="https://image-static.segmentfault.com/269/812/2698121046-5b9bc1e20a4ba_articlex" alt="修改Cookie"></p>
+<p>JS中也有可以操作cookie的api<br>( 假如换成别的用户的账号,那么还可以登录成功的话,就会存在风险问题.Session 来解决这个问题，防止用户篡改)<br>后端可以强制设置不允许修改Cookie，只要将Cookie的属性设置为<code>Httponly</code>即可(还可以手动改,但是JS改不了,也无法获取),具体语法看 MDN<br>4.Cookie 有效期吗？<br>默认有效期20分钟左右，不同浏览器策略不同(如果浏览器一直开着,那么Cookie不会被删除.如果关闭浏览器,那么浏览器为了安全考虑,20分钟左右后可能会删除Cookie.这也取决于服务器如何设置Cookie的有效期)<br>后端可以强制设置有效期，具体语法看 MDN<br>Cookie 遵守同源策略吗？<br>也有，不过跟 AJAX 的同源策略稍微有些不同。<br>当请求 qq.com 下的资源时，浏览器会默认带上 qq.com 对应的 Cookie，不会带上 baidu.com 对应的 Cookie<br>当请求 v.qq.com 下的资源时，浏览器不仅会带上 v.qq.com 的Cookie，还会带上 qq.com 的 Cookie<br>另外 Cookie 还可以根据路径做限制，请自行了解，这个功能用得比较少。</p>
+<h2 id="需要注意的细节问题"><a href="#需要注意的细节问题" class="headerlink" title="需要注意的细节问题"></a>需要注意的细节问题</h2><h3 id="为什么前后端都要进行表单验证"><a href="#为什么前后端都要进行表单验证" class="headerlink" title="为什么前后端都要进行表单验证?"></a>为什么前后端都要进行表单验证?</h3><p>前后端都要验证邮箱格式是否正确，账号密码格式是否正确，两次提交的密码是否相同等。<br>因为黑客可以绕过前端的js验证流程，例如黑客可以直接使用curl 进行请求的发送，直接与后台服务器进行交互。<br>如图:</p>
+<p><img src="https://image-static.segmentfault.com/410/641/4106417372-5baf73ddaef3e_articlex" alt="clipboard.png"></p>
+<p>所以后台也需要进行表单验证。</p>
+<h3 id="Cookie如何手动关闭"><a href="#Cookie如何手动关闭" class="headerlink" title="Cookie如何手动关闭"></a>Cookie如何手动关闭</h3><p><img src="https://image-static.segmentfault.com/236/619/2366198568-5baf39b6c0fa5_articlex" alt="clipboard.png"></p>
+<h3 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h3><p>cookie：曲奇饼<br>cache-control：缓存控制</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/07/简化版自己实现jQuery/" rel="next" title="简化版自己实现jQuery">
+                <i class="fa fa-chevron-left"></i> 简化版自己实现jQuery
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/25/cookie/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shi qiang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#以登录注册理解Cookie的作用过程"><span class="nav-number">1.</span> <span class="nav-text">以登录注册理解Cookie的作用过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie在注册登录时的作用过程："><span class="nav-number">1.1.</span> <span class="nav-text">Cookie在注册登录时的作用过程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程："><span class="nav-number">1.2.</span> <span class="nav-text">过程：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册"><span class="nav-number">1.2.1.</span> <span class="nav-text">注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登录"><span class="nav-number">1.2.2.</span> <span class="nav-text">登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后台读取Cookie保留登录状态与删除Cookie退出登录状态"><span class="nav-number">1.3.</span> <span class="nav-text">后台读取Cookie保留登录状态与删除Cookie退出登录状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie在登录的时候的特点"><span class="nav-number">1.4.</span> <span class="nav-text">Cookie在登录的时候的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几个关于Cookie的问题"><span class="nav-number">1.5.</span> <span class="nav-text">几个关于Cookie的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要注意的细节问题"><span class="nav-number">1.6.</span> <span class="nav-text">需要注意的细节问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么前后端都要进行表单验证"><span class="nav-number">1.6.1.</span> <span class="nav-text">为什么前后端都要进行表单验证?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie如何手动关闭"><span class="nav-number">1.6.2.</span> <span class="nav-text">Cookie如何手动关闭</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#翻译"><span class="nav-number">1.6.3.</span> <span class="nav-text">翻译</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shi qiang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

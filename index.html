@@ -229,6 +229,364 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/25/cookie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shi qiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Martin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/25/cookie/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-25T20:43:35+08:00">
+                2018-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><p>本文章整理自:<a href="https://wangdoc.com/javascript/bom/cookie.html#expires%EF%BC%8Cmax-age" target="_blank" rel="noopener">阮一峰Cookie</a><br>参考<a href="https://zhuanlan.zhihu.com/p/22396872?refer=study-fe" target="_blank" rel="noopener">「每日一题」简述 Cookie 是什么</a></p>
+<h2 id="什么是Cookie"><a href="#什么是Cookie" class="headerlink" title="什么是Cookie"></a>什么是Cookie</h2><p>Cookie 是<strong>服务器保存在浏览器</strong>的一小段<strong>文本信息</strong>。浏览器每次向服务器<strong>发出请求</strong>，就会<strong>自动附上</strong>这段信息。</p>
+<h2 id="Cookie的作用"><a href="#Cookie的作用" class="headerlink" title="Cookie的作用"></a>Cookie的作用</h2><ol>
+<li>Cookie 主要用来分辨两个请求<strong>是否来自同一个浏览器</strong></li>
+<li>用来<strong>保存</strong>一些<strong>状态信息</strong>，例如：<ul>
+<li>对话（<strong>session</strong>）管理：<strong>保存登录</strong>、购物车等需要记录的信息。</li>
+<li>个性化：<strong>保存用户的偏好</strong>，比如网页的字体大小、背景色等等。</li>
+<li>追踪：<strong>记录和分析用户行为</strong>。</li>
+</ul>
+</li>
+</ol>
+<p><strong>不推荐</strong>使用Cookie作为<strong>客户端存储</strong>，原因：</p>
+<ol>
+<li>它的容量很小（4KB）</li>
+<li>缺乏数据操作接口</li>
+<li>而且会影响性能</li>
+</ol>
+<p>客户端储存应该使用 <strong>Web storage API</strong> 和 <strong>IndexedDB</strong>。</p>
+<h2 id="Cookie的组成"><a href="#Cookie的组成" class="headerlink" title="Cookie的组成"></a>Cookie的组成</h2><p>Cookie 包含以下几方面的信息:</p>
+<ol>
+<li>Cookie 的<strong>名字</strong></li>
+<li>Cookie 的<strong>值</strong>（真正的<strong>数据</strong>写在这里面）(1、2两点就是键值对 )</li>
+<li><strong>到期时间</strong></li>
+<li><strong>所属域名</strong>（默认是当前域名）</li>
+<li><strong>生效的路径</strong>（默认是当前网址）</li>
+</ol>
+<p>(3/4/5是cookie的属性)</p>
+<h2 id="Cookie的作用过程"><a href="#Cookie的作用过程" class="headerlink" title="Cookie的作用过程"></a>Cookie的作用过程</h2><p>举例来说:</p>
+<ol>
+<li>用户访问网址<a href="http://www.example.com，服务器在浏览器写入一个" target="_blank" rel="noopener">www.example.com，服务器在浏览器写入一个</a> Cookie。这个 Cookie<br>就会包含<a href="http://www.example.com这个**域名**(第4点)，以及**根路径/**(第5点)。" target="_blank" rel="noopener">www.example.com这个**域名**(第4点)，以及**根路径/**(第5点)。</a>(这意味着，这个 Cookie 对该域名的根路径和它的所有子路径都有效。如果路径设为/forums，那么这个 Cookie 只有在访问<a href="http://www.example.com/forums及其子路径时才有效。" target="_blank" rel="noopener">www.example.com/forums及其子路径时才有效。</a>)</li>
+<li>以后，浏览器一旦访问这个路径，<strong>浏览器</strong>就会附上这段 Cookie <strong>发送给服务器</strong>。</li>
+</ol>
+<h3 id="Cookies作用范围"><a href="#Cookies作用范围" class="headerlink" title="Cookies作用范围"></a>Cookies作用范围</h3><p>浏览器的同源政策规定，两个网址只要<strong>域名相同</strong>和<strong>端口相同</strong>，就可以共享 Cookie（参见《<a href="https://wangdoc.com/javascript/bom/same-origin.html" target="_blank" rel="noopener">同源政策</a>》一章）。注意，这里<strong>不要求协议相同</strong>。也就是说，<code>http://example.com</code>设置的 Cookie，可以被<code>https://example.com</code>读取</p>
+<h2 id="HTTP-协议中的Cookie"><a href="#HTTP-协议中的Cookie" class="headerlink" title="HTTP 协议中的Cookie"></a>HTTP 协议中的Cookie</h2><h3 id="HTTP-回应：Cookie-的生成-服务器端生成cookies"><a href="#HTTP-回应：Cookie-的生成-服务器端生成cookies" class="headerlink" title="HTTP 回应：Cookie 的生成(服务器端生成cookies)"></a>HTTP 回应：Cookie 的<strong>生成</strong>(<strong>服务器端</strong>生成cookies)</h3><p>服务器如果希望在浏览器保存 Cookie，就要在 HTTP 回应的头信息里面，放置一个<code>Set-Cookie</code>字段.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie:foo=bar</span><br></pre></td></tr></table></figure>
+<p>上面代码会在浏览器保存一个名为<code>foo</code>的 Cookie，它的值为<code>bar</code>。<br>(设置的格式为:<code>&lt;键(名)&gt;=&lt;值&gt;</code>)</p>
+<p>HTTP 回应可以包含多个<code>Set-Cookie</code>字段，即在浏览器生成多个 Cookie。下面是一个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.0 200 OK</span><br><span class="line">Content-type: text/html</span><br><span class="line">Set-Cookie: yummy_cookie=choco</span><br><span class="line">Set-Cookie: tasty_cookie=strawberry</span><br><span class="line"></span><br><span class="line">[page content]</span><br></pre></td></tr></table></figure>
+<p>除了 Cookie 的值，<code>Set-Cookie</code>字段还可以附加 Cookie 的属性。</p>
+<p>一个<code>Set-Cookie</code>字段里面，可以同时包括多个属性，没有次序的要求。</p>
+<p>下面是设置一个Cookie的例子:除了名与它的值,还包含<code>Domain</code>属性<code>Secure</code>属性和<code>HttpPnly</code>属性:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Domain=&lt;domain-value&gt;; Secure; HttpOnly</span><br></pre></td></tr></table></figure>
+<p>除了<code>键=值</code>来设置cookie的名字和值之外,还可以设置属性。</p>
+<ol>
+<li><code>Expires</code>，<code>Max-Age</code>用来设置cookie持续时间</li>
+<li><code>Domain</code>，<code>Path</code>设置发送http请求时那些域名和路径需要附带这个Cookie</li>
+<li><code>Secure</code>属性指定浏览器只有在加密协议 HTTPS 下才能发送</li>
+<li><code>HttpOnly</code>属性指定该 Cookie 无法通过 JavaScript 脚本拿到</li>
+</ol>
+<p><a href="https://wangdoc.com/javascript/bom/cookie.html#cookie-%E7%9A%84%E5%B1%9E%E6%80%A7" target="_blank" rel="noopener">具体用法看这里Cookie 的属性—阮一峰</a></p>
+<h3 id="HTTP-请求：Cookie-的发送-浏览器发送Cookie"><a href="#HTTP-请求：Cookie-的发送-浏览器发送Cookie" class="headerlink" title="HTTP 请求：Cookie 的发送(浏览器发送Cookie)"></a>HTTP 请求：Cookie 的<strong>发送</strong>(<strong>浏览器</strong>发送Cookie)</h3><p>浏览器向服务器<strong>发送 HTTP 请求时</strong>，每个请求都会<strong>带上相应的 Cookie</strong>。也就是说，把服务器早前保存在浏览器的这段信息，<strong>再发回服务器</strong>。这时要使用 HTTP 头信息的Cookie字段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie: foo=bar</span><br></pre></td></tr></table></figure>
+<p>上面代码会向服务器发送名为foo的 Cookie，值为bar。</p>
+<p>Cookie字段可以包含多个 Cookie，使用分号（;）分隔。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie: name=value; name2=value2; name3=value3</span><br></pre></td></tr></table></figure>
+<p>下面是一个Http请求的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /sample_page.html HTTP/1.1</span><br><span class="line">Host: www.example.org</span><br><span class="line">Cookie: yummy_cookie=choco; tasty_cookie=strawberry</span><br></pre></td></tr></table></figure>
+<p>服务器收到浏览器发来的 Cookie 时，有两点是无法知道的(<strong>因为这些Cookie的属性只保存在浏览器上</strong>)。</p>
+<ol>
+<li>Cookie 的<strong>各种属性</strong>，比如何时过期。</li>
+<li><strong>哪个域名设置的 Cookie</strong>，到底是一级域名设的，还是某一个二级域名设的。</li>
+</ol>
+<h2 id="document-cookie读写当前网页的Cookie"><a href="#document-cookie读写当前网页的Cookie" class="headerlink" title="document.cookie读写当前网页的Cookie"></a><code>document.cookie</code>读写当前网页的Cookie</h2><h3 id="读Cookie"><a href="#读Cookie" class="headerlink" title="读Cookie"></a>读Cookie</h3><p>读取的时候，它会<strong>返回当前网页的所有</strong> Cookie，前提是该 Cookie 不能有<code>HTTPOnly</code>属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie // &quot;foo=bar;baz=bar&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="写Coookie"><a href="#写Coookie" class="headerlink" title="写Coookie"></a>写Coookie</h3><p><code>document.cookie</code>属性是可写的，可以通过它为当前网站添加 Cookie。<br><strong>等号两边不能有空格</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie = &apos;fontSize=14&apos;;</span><br></pre></td></tr></table></figure>
+<p>但是，<code>document.cookie</code>一次只能写入一个 Cookie，而且写入并不是覆盖，而是添加。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">document.cookie = &apos;test1=hello&apos;;</span><br><span class="line">document.cookie = &apos;test2=world&apos;;</span><br><span class="line">document.cookie</span><br><span class="line">// test1=hello;test2=world</span><br></pre></td></tr></table></figure>
+<p>写入 Cookie 的时候，可以一起写入 Cookie 的属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie = &quot;foo=bar; expires=Fri, 31 Dec 2020 23:59:59 GMT&quot;;</span><br></pre></td></tr></table></figure>
+<p>各个属性的写入注意点如下。</p>
+<p><code>path</code>属性必须为绝对路径，默认为当前路径。<br><code>domain</code>属性值必须是当前发送 Cookie 的域名的一部分。比如，当前域名是<code>example.com</code>，就不能将其设为<code>foo.com</code>。该属性默认为当前的一级域名（不含二级域名）。<br><code>max-age</code>属性的值为秒数。<br><code>expires</code>属性的值为 <strong>UTC</strong> 格式，可以使用<code>Date.prototype.toUTCString()</code>进行日期格式转换。<br><code>document.cookie</code>写入 Cookie 的例子如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">document.cookie = &apos;fontSize=14; &apos;</span><br><span class="line">  + &apos;expires=&apos; + someDate.toGMTString() + &apos;; &apos;</span><br><span class="line">  + &apos;path=/subdirectory; &apos;</span><br><span class="line">  + &apos;domain=*.example.com&apos;;</span><br></pre></td></tr></table></figure>
+<p>Cookie 的属性一旦设置完成，就<strong>没有办法读取这些属性的值</strong>。</p>
+<h3 id="Cookie-的删除"><a href="#Cookie-的删除" class="headerlink" title="Cookie 的删除"></a>Cookie 的删除</h3><p>删除一个现存 Cookie 的唯一方法，是<strong>设置</strong>它的<code>expires</code>属性为一个<strong>过去的日期</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie = &apos;fontSize=;expires=Thu, 01-Jan-1970 00:00:01 GMT&apos;;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，名为<code>fontSize</code>的 Cookie 的值为空，过期时间设为1970年1月1月零点，就等同于删除了这个 Cookie。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/25/以登录注册理解Cookie的作用过程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shi qiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Martin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/25/以登录注册理解Cookie的作用过程/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-25T20:43:35+08:00">
+                2018-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="以登录注册理解Cookie的作用过程"><a href="#以登录注册理解Cookie的作用过程" class="headerlink" title="以登录注册理解Cookie的作用过程"></a>以登录注册理解Cookie的作用过程</h1><h2 id="Cookie在注册登录时的作用过程："><a href="#Cookie在注册登录时的作用过程：" class="headerlink" title="Cookie在注册登录时的作用过程："></a>Cookie在注册登录时的作用过程：</h2><h2 id="过程："><a href="#过程：" class="headerlink" title="过程："></a>过程：</h2><h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><p>注册时把账号密码写入数据库</p>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>第一次登录时服务器给浏览器发送Cookie.</p>
+<p>后台的登录路由代码(nodejs):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">else if (path === &apos;/sign_in&apos; &amp;&amp; method === &apos;POST&apos;) &#123;</span><br><span class="line">        readBody(request).then((body) =&gt; &#123;</span><br><span class="line">            let strings = body.split(&apos;&amp;&apos;) // [&apos;email=1&apos;, &apos;password=2&apos;, &apos;password_confirmation=3&apos;]</span><br><span class="line">            let hash = &#123;&#125;</span><br><span class="line">            strings.forEach((string) =&gt; &#123;</span><br><span class="line">                // string == &apos;email=1&apos;</span><br><span class="line">                let parts = string.split(&apos;=&apos;) // [&apos;email&apos;, &apos;1&apos;]</span><br><span class="line">                let key = parts[0]</span><br><span class="line">                let value = parts[1]</span><br><span class="line">                hash[key] = decodeURIComponent(value) // hash[&apos;email&apos;] = &apos;1&apos;</span><br><span class="line">            &#125;)</span><br><span class="line">            let &#123;</span><br><span class="line">                email,</span><br><span class="line">                password</span><br><span class="line">            &#125; = hash</span><br><span class="line">            var users = fs.readFileSync(&apos;./db/users&apos;, &apos;utf8&apos;)</span><br><span class="line">            try &#123;</span><br><span class="line">                users = JSON.parse(users) // []</span><br><span class="line">            &#125; catch (exception) &#123;</span><br><span class="line">                users = []</span><br><span class="line">            &#125;</span><br><span class="line">            let found</span><br><span class="line">            for (let i = 0; i &lt; users.length; i++) &#123;</span><br><span class="line">                if (users[i].email === email &amp;&amp; users[i].password === password) &#123;</span><br><span class="line">                    found = true</span><br><span class="line">                    break</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if (found) &#123;//关键在这里,验证成功,设置登录Cookie为登录的邮箱,并放在响应里发给浏览器</span><br><span class="line">                response.setHeader(&apos;Set-Cookie&apos;, `sign_in_email=$&#123;email&#125;`)</span><br><span class="line">                response.statusCode = 200</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                response.statusCode = 401</span><br><span class="line">            &#125;</span><br><span class="line">            response.end()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>在登录成功的一瞬间,需要后台设置一个Cookie,记录一下登陆的用户id(这里用邮箱表示,代码在上面),然后发响应给浏览器<br>例如在服务器端设置响应头：<code>set-cookies：user_email=1@mtt.com</code></p>
+<p>这时候我们查看响应：</p>
+<p><img src="https://segmentfault.com/img/bVbhGdq?w=943&amp;h=544" alt="clipboard.png"></p>
+<p>发现响应头已经设置cookie.</p>
+<p><img src="https://segmentfault.com/img/bVbhGdr?w=875&amp;h=465" alt="clipboard.png"></p>
+<p>然后跳转到主页，这时候我们查看跳转到主页的请求：</p>
+<p><img src="https://segmentfault.com/img/bVbhGds?w=1189&amp;h=1325" alt="clipboard.png"></p>
+<p>发现跳转到主页的请求头中包含cookie字段(以后访问这个域名都会带着这个Cookie)!所以，就像上篇文章说的：</p>
+<p>如果服务器给了浏览器一个setcookie的响应头，那么这个浏览器以后所有的请求，只要是相同的源(即就是上次给我发送Cookie的那个域名,域名和端口相同)，那就么就会把当时服务器发给这个浏览器的Cookie带着</p>
+<blockquote>
+<p>以后，浏览器一旦访问这个路径，浏览器就会附上这段 Cookie 发送给服务器</p>
+</blockquote>
+<p>即:第一次请求,服务器为浏览器设置Cookie.下次请求,浏览器带上Cookie,发送给服务器.<br>第一次登录的时候,服务器给浏览器的响应设置一个Cookie,<code>set-cookies：user_email=1@mtt.com</code>,然后当浏览器下次进行请求的时候,发现Cookie中有名为User_email的Cookie,而且我发送请求的域名还是上次发给我带Cookie的响应的那个域名.</p>
+<p>那么就无需再次登录了.相当于服务器给浏览器发了进入门票,下次或下下次浏览器在进入服务器的时候给服务器看票就可以了</p>
+<h2 id="后台读取Cookie保留登录状态与删除Cookie退出登录状态"><a href="#后台读取Cookie保留登录状态与删除Cookie退出登录状态" class="headerlink" title="后台读取Cookie保留登录状态与删除Cookie退出登录状态"></a>后台读取Cookie保留登录状态与删除Cookie退出登录状态</h2><p>首页代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;我是首页&lt;/h1&gt;</span><br><span class="line">    &lt;div class=&quot;&quot;&gt;</span><br><span class="line">        &lt;a href=&quot;./sign_up&quot;&gt;注册&lt;/a&gt;</span><br><span class="line">        &lt;a href=&quot;./sign_in&quot;&gt;登录&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;h1&gt;你的状态是:__status__&lt;/h1&gt;</span><br><span class="line">    &lt;h1&gt;你的邮箱账号是:__email__&lt;/h1&gt;</span><br><span class="line">    &lt;h1&gt;你的密码是:__password__&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">    &lt;a href=&quot;javascript:;&quot; id=&quot;logOffBtn&quot;&gt;退出登录(删除cookie)&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">logOffBtn.addEventListener(&quot;click&quot;, () =&gt; &#123;</span><br><span class="line">        // 删除一个现存 Cookie 的唯一方法，是设置它的expires属性为一个过去的日期。</span><br><span class="line">        document.cookie = &apos;sign_in_email=;expires=Thu, 01-Jan-1970 00:00:01 GMT&apos;</span><br><span class="line">        window.location = &quot;/&quot;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>后台路由代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">if (path === &apos;/&apos;) &#123;</span><br><span class="line">        response.statusCode = 200</span><br><span class="line">        let string = fs.readFileSync(&apos;./index.html&apos;)</span><br><span class="line">        string = string.toString();</span><br><span class="line">        var users = fs.readFileSync(&apos;./db/users&apos;, &apos;utf8&apos;)</span><br><span class="line">        users = JSON.parse(users)//转化为user对象数组</span><br><span class="line"></span><br><span class="line">        console.log(users);</span><br><span class="line">        let cookies = request.headers.cookie || &apos;&apos;//[&apos;email=111&apos;, &apos;asdasd=111&apos;]</span><br><span class="line">        cookies = cookies.split(&quot;; &quot;)</span><br><span class="line">        let hash=&#123;&#125;</span><br><span class="line">        cookies.forEach((string)=&gt;&#123;</span><br><span class="line">            let parts = string.split(&quot;=&quot;)</span><br><span class="line">            let key = parts[0]</span><br><span class="line">            let value = parts[1]</span><br><span class="line">            hash[key] = value;</span><br><span class="line">        &#125;)</span><br><span class="line">        </span><br><span class="line">        let eamil = hash.sign_in_email</span><br><span class="line">        let foundedUser</span><br><span class="line">        users.forEach((userObj)=&gt;&#123;</span><br><span class="line">            if(userObj.email===eamil)&#123;</span><br><span class="line">                foundedUser = userObj;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        console.log(foundedUser);</span><br><span class="line">        if(foundedUser)&#123;</span><br><span class="line">            string = string.replace(&apos;__status__&apos;, &apos;已登录&apos;)</span><br><span class="line">            string = string.replace(&apos;__email__&apos;, foundedUser.email)</span><br><span class="line">            string = string.replace(&apos;__password__&apos;, foundedUser.password)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            string = string.replace(&apos;__status__&apos;, &apos;未登录,请去登录&apos;)</span><br><span class="line">            string = string.replace(&apos;__email__&apos;, &apos;没&apos;)</span><br><span class="line">            string = string.replace(&apos;__password__&apos;, &apos;没&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        response.setHeader(&apos;Content-Type&apos;, &apos;text/html;charset=utf-8&apos;)</span><br><span class="line">        response.write(string)</span><br><span class="line">        response.end()</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>在没有Cookie的时候,首页的状态</p>
+<p><img src="https://segmentfault.com/img/bVbhJaG?w=841&amp;h=428" alt="clipboard.png"></p>
+<p>登录之后,后台根据Cookie查询数据库,将用户名与密码传到前台的首页上</p>
+<p><img src="https://segmentfault.com/img/bVbhJa1?w=1077&amp;h=1070" alt="clipboard.png"></p>
+<p>退出登录将删除Cookie并刷新页面,重新回到未登录的状态</p>
+<h2 id="Cookie在登录的时候的特点"><a href="#Cookie在登录的时候的特点" class="headerlink" title="Cookie在登录的时候的特点"></a>Cookie在登录的时候的特点</h2><p>我们得到Cookie的特点:</p>
+<ol>
+<li>第一次登录的时候,服务器通过 Set-Cookie 响应头设置 Cookie,然后以响应的形式发给浏览器</li>
+<li>浏览器得到 响应中Cookie 之后，之后每次请求这个域名都要带上这个 Cookie</li>
+<li>之后服务器读取当时自己设置的 Cookie 就知道登录用户的信息（email）</li>
+</ol>
+<h2 id="几个关于Cookie的问题"><a href="#几个关于Cookie的问题" class="headerlink" title="几个关于Cookie的问题"></a>几个关于Cookie的问题</h2><p>1.我在 Chrome 登录了得到 Cookie，用 Safari 访问，Safari 会带上 Cookie 吗<br>no</p>
+<p>2.Cookie 存在哪<br>Windows 存在 C 盘的一个文件里</p>
+<p>3.Cookie会被用户篡改吗？<br>可以，例如在谷歌浏览器开发者模式下的application-&gt;Cookie中可以手动修改,修改之后,下次发送请求时,附带的就是修改后的Cookie</p>
+<p><img src="https://image-static.segmentfault.com/269/812/2698121046-5b9bc1e20a4ba_articlex" alt="修改Cookie"></p>
+<p>JS中也有可以操作cookie的api<br>( 假如换成别的用户的账号,那么还可以登录成功的话,就会存在风险问题.Session 来解决这个问题，防止用户篡改)<br>后端可以强制设置不允许修改Cookie，只要将Cookie的属性设置为<code>Httponly</code>即可(还可以手动改,但是JS改不了,也无法获取),具体语法看 MDN<br>4.Cookie 有效期吗？<br>默认有效期20分钟左右，不同浏览器策略不同(如果浏览器一直开着,那么Cookie不会被删除.如果关闭浏览器,那么浏览器为了安全考虑,20分钟左右后可能会删除Cookie.这也取决于服务器如何设置Cookie的有效期)<br>后端可以强制设置有效期，具体语法看 MDN<br>Cookie 遵守同源策略吗？<br>也有，不过跟 AJAX 的同源策略稍微有些不同。<br>当请求 qq.com 下的资源时，浏览器会默认带上 qq.com 对应的 Cookie，不会带上 baidu.com 对应的 Cookie<br>当请求 v.qq.com 下的资源时，浏览器不仅会带上 v.qq.com 的Cookie，还会带上 qq.com 的 Cookie<br>另外 Cookie 还可以根据路径做限制，请自行了解，这个功能用得比较少。</p>
+<h2 id="需要注意的细节问题"><a href="#需要注意的细节问题" class="headerlink" title="需要注意的细节问题"></a>需要注意的细节问题</h2><h3 id="为什么前后端都要进行表单验证"><a href="#为什么前后端都要进行表单验证" class="headerlink" title="为什么前后端都要进行表单验证?"></a>为什么前后端都要进行表单验证?</h3><p>前后端都要验证邮箱格式是否正确，账号密码格式是否正确，两次提交的密码是否相同等。<br>因为黑客可以绕过前端的js验证流程，例如黑客可以直接使用curl 进行请求的发送，直接与后台服务器进行交互。<br>如图:</p>
+<p><img src="https://image-static.segmentfault.com/410/641/4106417372-5baf73ddaef3e_articlex" alt="clipboard.png"></p>
+<p>所以后台也需要进行表单验证。</p>
+<h3 id="Cookie如何手动关闭"><a href="#Cookie如何手动关闭" class="headerlink" title="Cookie如何手动关闭"></a>Cookie如何手动关闭</h3><p><img src="https://image-static.segmentfault.com/236/619/2366198568-5baf39b6c0fa5_articlex" alt="clipboard.png"></p>
+<h3 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h3><p>cookie：曲奇饼<br>cache-control：缓存控制</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/07/简化版自己实现jQuery/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1862,281 +2220,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/27/Git的使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shi qiang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Martin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/27/Git的使用/" itemprop="url">Git入门及简单使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-27T14:33:07+08:00">
-                2018-06-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用Git有三种方式，我们可以按照自己的需求进行选择。</p>
-<h2 id="1-只在本地使用。"><a href="#1-只在本地使用。" class="headerlink" title="1.只在本地使用。"></a>1.只在本地使用。</h2><ul>
-<li>1.1 初始化<ul>
-<li>1.1.1 创建目录作为我们的项目目录：mkdir git-dome-1</li>
-<li>1.1.2 进入目录: cd git-demo-1</li>
-<li>1.1.3 gitinit，这句命令会在git-demo-1里创建一个。git目录</li>
-<li>1.1.4 ls -la 你就会看到.git目录，它就是一个[仓库]，不要点进去。</li>
-<li>1.1.5 在 git-demo-1 目录里面添加任意文件，假设我们添加了两个文件，分别是 index.html 和 css/style.css。<ul>
-<li>i.  touch index.html</li>
-<li>ii. mkdir css</li>
-<li>iii. touch css/style.css</li>
-<li>1.1.6 运行 git status -sb 可以看到文件前面有 ?? 号。<br>## Initial commit on master<br>?? css/      <br>?? index.html<br>这个 ?? 表示 git 一脸懵逼，不知道你要怎么对待这些变动。</li>
-</ul>
-</li>
-<li>1.1.7 使用 git add 将文件添加到「暂存区」<ul>
-<li>i. 你可以一个一个地add      <br> a. git add index.html       <br>b. git add css/style.css</li>
-<li>ii. 你也可以一次性 add      <br> a. git add . 意思是把当前目录（.表示当前目录）里面的变动都加到「暂存区」</li>
-</ul>
-</li>
-<li>1.1.8 再次运行 git status -sb，可以看到 ?? 变成了 A      <br>  Initial commit on master      <br>  A  css/style.css      <br>  A  index.html      <br>A 的意思就是添加，也就是说你告诉 git，这些文件我要加到仓库里</li>
-<li>1.1.9 使用 git commit -m “信息” 将你 add 过的内容「正式提交」到本地仓库（.git就是本地仓库），并添加一些注释信息，方便日后查阅。      <br><br>i. 你可以一个一个地 commit.          <br>  git commit index.html -m ‘添加index.html’          <br>  git commit css/style.css -m “添加 css/style.css”      <br>ii. 你也可以一次性 commit.          <br>git commit . -m “添加了几个文件”.</li>
-<li>1.1.10 再次运行 git status -sb，发现没有文件变动了，这是因为文件的变动已经记录在仓库里了。</li>
-<li>1.1.11 这时你使用 git log 就可以看到历史上的变动：          <br>commit f0d95058cd32a332b98967f6c0a701c64a00810a<br>Author: frankfang <a href="mailto:&#102;&#114;&#x61;&#x6e;&#x6b;&#x66;&#x61;&#110;&#x67;&#49;&#x39;&#57;&#x30;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;" target="_blank" rel="noopener">&#102;&#114;&#x61;&#x6e;&#x6b;&#x66;&#x61;&#110;&#x67;&#49;&#x39;&#57;&#x30;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a><br>Date:   Thu Sep 28 22:30:43 2017 +0800            <br>添加几个文件</li>
-<li>1.1.12 以上就是 git add / git commit 的一次完整过程，可以看到，挺复杂的，需要多次练习熟记于心。</li>
-</ul>
-</li>
-</ul>
-<h2 id="2-将本地仓库上传到Github"><a href="#2-将本地仓库上传到Github" class="headerlink" title="2.将本地仓库上传到Github."></a>2.将本地仓库上传到Github.</h2><p>  如果我想继续改文件，应该怎么做呢？</p>
-<ul>
-<li>2.1 start css/style.css 会使用默认的编辑器打开 css/style.css（macOS 上对应的命令是 open css/style.css）</li>
-<li>2.2 然后我们在 css/style.css 里写入 body {background: red}，保存退出</li>
-<li>2.3 运行 git status -sb 发现提示中有一个 M<br>## master<br>M css/style.css<br>这个 M 的意思就是 Modified，表示这个文件被修改了&gt;</li>
-<li>2.4 此时你如果想让改动保存到仓库里，你需要先 git add css/style.css 或者也可以 git add .<br>注意，由于这个 css/style.css 以前被我们 add 过，你往文章上面看，我们是 add 过 css/style.css 的，所以此处的 git add 操作可以省略，但我建议你使用 git 的前一个月，不要省略 git add。<br>换句话说，每一次改动，都要经过 git add 和 git commit 两个命令，才能被添加到 .git 本地仓库里。</li>
-<li>2.5 再次运行 git status -sb 发现 M 有红色变成了绿色，红色和绿色有啥区别呢？别管它们的区别，记住我说的，先 add，再 commit，等你熟练之后再去理解区别。<br>先形成肌肉记忆，在去形成大脑记忆！</li>
-<li>2.6 运行 git commit -m “更新 css/style.css”，这个改动就被提交到 .git 本地仓库了。再说一次，不要去 .git 目录里面，那里的东西你一无所知。</li>
-<li>2.7 再次运行 git status -sb，会发现没有变更了，这说明所有变动都被本地仓库记录在案了。<br>这里来透露一下 git status -sb 是什么意思：git status 是用来显示当前的文件状态的，哪个文件变动了，方便你进行 git add 操作。-sb 选项的意思就是，SB都能看懂，哈，这是开玩笑，-s 的意思是显示总结（summary），-b 的意思是显示分支（branch），所以 -sb 的意思是显示总结和分支。<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3>至此，我们来总结一下用到的命令<br>git init，初始化本地仓库 .git<br><br>git status -sb，显示当前所有文件的状态<br><br>git add 文件路径，用来将变动加到暂存区<br><br>git commit -m “信息”，用来正式提交变动，提交至 .git 仓库<br>如果有新的变动，我们只需要依次执行 git add xxx 和 git commit -m ‘xxx’ 两个命令即可。别看本教程废话那么多，其实就这一句有用！先 add 再 commit，行了，你学会 git 了。<br>git log 查看变更历史.</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/开博大吉/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shi qiang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Martin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/25/开博大吉/" itemprop="url">开博大吉</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T10:11:46+08:00">
-                2018-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2187,7 +2270,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

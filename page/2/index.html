@@ -229,6 +229,281 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/27/Git的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shi qiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Martin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/27/Git的使用/" itemprop="url">Git入门及简单使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-27T14:33:07+08:00">
+                2018-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使用Git有三种方式，我们可以按照自己的需求进行选择。</p>
+<h2 id="1-只在本地使用。"><a href="#1-只在本地使用。" class="headerlink" title="1.只在本地使用。"></a>1.只在本地使用。</h2><ul>
+<li>1.1 初始化<ul>
+<li>1.1.1 创建目录作为我们的项目目录：mkdir git-dome-1</li>
+<li>1.1.2 进入目录: cd git-demo-1</li>
+<li>1.1.3 gitinit，这句命令会在git-demo-1里创建一个。git目录</li>
+<li>1.1.4 ls -la 你就会看到.git目录，它就是一个[仓库]，不要点进去。</li>
+<li>1.1.5 在 git-demo-1 目录里面添加任意文件，假设我们添加了两个文件，分别是 index.html 和 css/style.css。<ul>
+<li>i.  touch index.html</li>
+<li>ii. mkdir css</li>
+<li>iii. touch css/style.css</li>
+<li>1.1.6 运行 git status -sb 可以看到文件前面有 ?? 号。<br>## Initial commit on master<br>?? css/      <br>?? index.html<br>这个 ?? 表示 git 一脸懵逼，不知道你要怎么对待这些变动。</li>
+</ul>
+</li>
+<li>1.1.7 使用 git add 将文件添加到「暂存区」<ul>
+<li>i. 你可以一个一个地add      <br> a. git add index.html       <br>b. git add css/style.css</li>
+<li>ii. 你也可以一次性 add      <br> a. git add . 意思是把当前目录（.表示当前目录）里面的变动都加到「暂存区」</li>
+</ul>
+</li>
+<li>1.1.8 再次运行 git status -sb，可以看到 ?? 变成了 A      <br>  Initial commit on master      <br>  A  css/style.css      <br>  A  index.html      <br>A 的意思就是添加，也就是说你告诉 git，这些文件我要加到仓库里</li>
+<li>1.1.9 使用 git commit -m “信息” 将你 add 过的内容「正式提交」到本地仓库（.git就是本地仓库），并添加一些注释信息，方便日后查阅。      <br><br>i. 你可以一个一个地 commit.          <br>  git commit index.html -m ‘添加index.html’          <br>  git commit css/style.css -m “添加 css/style.css”      <br>ii. 你也可以一次性 commit.          <br>git commit . -m “添加了几个文件”.</li>
+<li>1.1.10 再次运行 git status -sb，发现没有文件变动了，这是因为文件的变动已经记录在仓库里了。</li>
+<li>1.1.11 这时你使用 git log 就可以看到历史上的变动：          <br>commit f0d95058cd32a332b98967f6c0a701c64a00810a<br>Author: frankfang <a href="mailto:&#x66;&#114;&#97;&#110;&#107;&#x66;&#97;&#110;&#103;&#x31;&#x39;&#x39;&#48;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;" target="_blank" rel="noopener">&#x66;&#114;&#97;&#110;&#107;&#x66;&#97;&#110;&#103;&#x31;&#x39;&#x39;&#48;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a><br>Date:   Thu Sep 28 22:30:43 2017 +0800            <br>添加几个文件</li>
+<li>1.1.12 以上就是 git add / git commit 的一次完整过程，可以看到，挺复杂的，需要多次练习熟记于心。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-将本地仓库上传到Github"><a href="#2-将本地仓库上传到Github" class="headerlink" title="2.将本地仓库上传到Github."></a>2.将本地仓库上传到Github.</h2><p>  如果我想继续改文件，应该怎么做呢？</p>
+<ul>
+<li>2.1 start css/style.css 会使用默认的编辑器打开 css/style.css（macOS 上对应的命令是 open css/style.css）</li>
+<li>2.2 然后我们在 css/style.css 里写入 body {background: red}，保存退出</li>
+<li>2.3 运行 git status -sb 发现提示中有一个 M<br>## master<br>M css/style.css<br>这个 M 的意思就是 Modified，表示这个文件被修改了&gt;</li>
+<li>2.4 此时你如果想让改动保存到仓库里，你需要先 git add css/style.css 或者也可以 git add .<br>注意，由于这个 css/style.css 以前被我们 add 过，你往文章上面看，我们是 add 过 css/style.css 的，所以此处的 git add 操作可以省略，但我建议你使用 git 的前一个月，不要省略 git add。<br>换句话说，每一次改动，都要经过 git add 和 git commit 两个命令，才能被添加到 .git 本地仓库里。</li>
+<li>2.5 再次运行 git status -sb 发现 M 有红色变成了绿色，红色和绿色有啥区别呢？别管它们的区别，记住我说的，先 add，再 commit，等你熟练之后再去理解区别。<br>先形成肌肉记忆，在去形成大脑记忆！</li>
+<li>2.6 运行 git commit -m “更新 css/style.css”，这个改动就被提交到 .git 本地仓库了。再说一次，不要去 .git 目录里面，那里的东西你一无所知。</li>
+<li>2.7 再次运行 git status -sb，会发现没有变更了，这说明所有变动都被本地仓库记录在案了。<br>这里来透露一下 git status -sb 是什么意思：git status 是用来显示当前的文件状态的，哪个文件变动了，方便你进行 git add 操作。-sb 选项的意思就是，SB都能看懂，哈，这是开玩笑，-s 的意思是显示总结（summary），-b 的意思是显示分支（branch），所以 -sb 的意思是显示总结和分支。<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3>至此，我们来总结一下用到的命令<br>git init，初始化本地仓库 .git<br><br>git status -sb，显示当前所有文件的状态<br><br>git add 文件路径，用来将变动加到暂存区<br><br>git commit -m “信息”，用来正式提交变动，提交至 .git 仓库<br>如果有新的变动，我们只需要依次执行 git add xxx 和 git commit -m ‘xxx’ 两个命令即可。别看本教程废话那么多，其实就这一句有用！先 add 再 commit，行了，你学会 git 了。<br>git log 查看变更历史.</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/开博大吉/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shi qiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Martin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/25/开博大吉/" itemprop="url">开博大吉</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-25T10:11:46+08:00">
+                2018-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/25/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -394,7 +669,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
