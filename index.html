@@ -229,6 +229,214 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/Vue-Webpack-ToDoList课程笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shi qiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Martin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/07/Vue-Webpack-ToDoList课程笔记/" itemprop="url">Vue-Webpack-ToDoList课程笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-07T00:04:12+08:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Vue-Webpack-ToDoList课程笔记"><a href="#Vue-Webpack-ToDoList课程笔记" class="headerlink" title="Vue-Webpack-ToDoList课程笔记"></a>Vue-Webpack-ToDoList课程笔记</h2><h3 id="1-1-课程介绍"><a href="#1-1-课程介绍" class="headerlink" title="1-1 课程介绍"></a>1-1 课程介绍</h3><p>一、前端的价值：</p>
+<p>1、搭建前端工程：数据缓存、es6和less（可以加快开发效率）。</p>
+<p>2、网络优化：http(所有静态资源都是通过http请求的)。</p>
+<p>3、api定制。</p>
+<p>4、node.js层。</p>
+<p>二、vue-cli生成的项目就是基于webpack的前端工程。</p>
+<h3 id="2-1-vue-loader-webpack项目配置"><a href="#2-1-vue-loader-webpack项目配置" class="headerlink" title="2-1 vue-loader+webpack项目配置"></a>2-1 vue-loader+webpack项目配置</h3><p>一、vscode直接打开命令行：control+`(esc下面的按键)</p>
+<p>二、webpack、vue项目</p>
+<p>1、npm init：初始化npm 项目。</p>
+<p>2、npm i webpack vue vue-loader (i代表install)：不区分dev-dependency，和dependency</p>
+<p>3、npm i css-loader vue-template-compiler(2安装完后，提示需要安装的依赖，3完成安装)</p>
+<p>三、组件不能直接挂载到html中。</p>
+<p>四、render接收h参数，这个参数实际上是vue里的creatApp，通过它把app挂载到html中，render是渲染内容，如果是要挂载，还要用$mount.</p>
+<p>五、package.json里的scripts加上”build”: “webpack –config webpack.config.js”，这样才会调用项目里的webpack，如果是输命令，会调用全局的webpack。</p>
+<p>六、npm run build ,报错：you may need an appropriate loader to hand this file type.</p>
+<p>需要为.vue文件类型声明一个loader(vue-loader).</p>
+<p>webpack原生只支持js.</p>
+<p>七、把零碎的js 打包成一个，可以减少http请求。</p>
+<h3 id="2-2-webpack配置项目加载各种静态资源及css预处理器"><a href="#2-2-webpack配置项目加载各种静态资源及css预处理器" class="headerlink" title="2-2 webpack配置项目加载各种静态资源及css预处理器"></a>2-2 webpack配置项目加载各种静态资源及css预处理器</h3><p>一、.vue用loader,.css用use，style-loader把css写到html中，css-loader便于webpack处理css文件.</p>
+<p>二、loader是可以配置一些选项的。</p>
+<p>三、url-loader可以把图片转换成base-64代码，编写在js中，limit:1024，如果图片大小小于1024，就编译成base-64。</p>
+<p>四、npm i style-loader url-loader file-loader, url-loader依赖于file-loader。</p>
+<p>五、css预处理器:stylus</p>
+<p>六、npm i stylus-loader</p>
+<p>七、sass,less都可以在webpack中配置相关的loader</p>
+<h3 id="2-3-webpack-dev-server的配置和使用"><a href="#2-3-webpack-dev-server的配置和使用" class="headerlink" title="2-3 webpack-dev-server的配置和使用"></a>2-3 webpack-dev-server的配置和使用</h3><p>一、安装dev-server静态资源包：npm i webpack-dev-server</p>
+<p>webpack通过build启动webpack.config.js,webpack就会帮我们去打包js代码</p>
+<p>二、安装cross-env包: npm i cross-env</p>
+<p>不同平台上设置的环境变量是不一样的，mac上NODE_ENV=production就能读取环境变量</p>
+<p>windows要用set，因为不想不同平台写不同的命令，所以用cross-env，写cross-env NODE_ENV=production 这样不同平台都可以执行同一个脚本。</p>
+<p>启动脚本时设置的环境变量都是存放在process.env这个变量中的。</p>
+<p>三、cofig.devSever中的host，如果是’0.0.0.0’，就能通过localhost,127.0.0,ip访问。</p>
+<p>四、错误信息不覆盖在页面，输出在控制台（这样习惯多了）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">errorOverlay: false, // false:错误不显示在覆盖层</span><br></pre></td></tr></table></figure>
+<p>overlay:  /‘ovəlɛi/：覆盖图，覆盖物。</p>
+<p>五、npm i html-webpack-plugin</p>
+<h3 id="3-1-vue2的核心知识介绍"><a href="#3-1-vue2的核心知识介绍" class="headerlink" title="3-1 vue2的核心知识介绍"></a>3-1 vue2的核心知识介绍</h3><p>一、vue是一个组件化框架</p>
+<p>二、react有jsx，html通过render方法动态生成，每次有数据变化，都会执行render方法，生成Html.</p>
+<p>三、重点：数据绑定，vue文件开发方式，render</p>
+<p>四、vue的api重点：</p>
+<p>（1）生命周期方法（跟react学习的）</p>
+<p>（2）computed，是一个reactive框架（声明好的数据，一旦改变，就会影响依赖这些数据的地方，如template依赖于data里的数据，data改变时，template改变）。</p>
+<h3 id="3-2-配置vue的jsx写法以及postcss"><a href="#3-2-配置vue的jsx写法以及postcss" class="headerlink" title="3-2 配置vue的jsx写法以及postcss"></a>3-2 配置vue的jsx写法以及postcss</h3><p>一、npm i postcss-loader autoprefixer babel-loader babel-core</p>
+<p>二、postcss帮我们后处理css，autoprefixer：需要为浏览器加前缀属性的， babel：演示如何使用render，vue可以写jsx代码</p>
+<p>三、npm i babel-preset-env babel-plugin-transform-vue-jsx</p>
+<p>四、npm i babel-helper-vue-jsx-merge-props babel-plugin-syntax-jsx</p>
+<h3 id="3-3-实现todo应用的界面"><a href="#3-3-实现todo应用的界面" class="headerlink" title="3-3 实现todo应用的界面"></a>3-3 实现todo应用的界面</h3><p>一、scoped：样式只在这个组件起作用。</p>
+<p>二、vue结构更清晰，jsx功能更强大。</p>
+<p>三、如果v-for中用:key，循环是一个非常费资源的操作，如果下次循环key的值没有变，就会复用节点，不会新增节点。key可用item,:key=”item”</p>
+<p>四、class写字符串，:class,可以写数组，也可以写对象</p>
+<h3 id="3-4-实现todo应用的业务逻辑"><a href="#3-4-实现todo应用的业务逻辑" class="headerlink" title="3-4 实现todo应用的业务逻辑"></a>3-4 实现todo应用的业务逻辑</h3><p>一、vue或react开发的时候，尽量将数据都集中在顶层的一个地方。</p>
+<p>二、vue中$emit触发事件，父组件通过@监听事件，实现父子组件通信。</p>
+<p>子组件用this.$emit(‘de’, this.deleted)，父组件用@del=””监听，可以实现父子组件事件的解耦，父组件想监听就监听，不想监听就不监听。</p>
+<p>三、chrome插件：vue.js devtools的安装，地址：<a href="https://segmentfault.com/a/1190000009682735%E3%80%82" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009682735。</a> </p>
+<p>四、this.todos.splice(this.todos.findIndex(todo =&gt; todo.id === id), 1);</p>
+<p>传进去的是todo，如果todo的id等于id，就删掉一个节点。</p>
+<p>五、数组的filter方法</p>
+<p>var ages = [32, 33, 16, 40];</p>
+<p>function myFunction() {</p>
+<p>​    document.getElementById(“demo”).innerHTML = </p>
+<p>​        ages.filter( item =&gt; item &gt;=18).length;</p>
+<p>}</p>
+<p>得到[32,33,40]。</p>
+<p>六、如果用splice一条一条删，删了一条之后，index会改变，后续无法删，所以用filter。</p>
+<p>数据在哪里声明，就在哪里操作。</p>
+<p>七、findIndex()。</p>
+<p>findIndex() 方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置。</p>
+<p>findIndex() 方法为数组中的每个元素都调用一次函数执行：</p>
+<ul>
+<li>当数组中的元素在测试条件时返回 <em>true</em> 时, findIndex() 返回符合条件的元素的索引位置，之后的值不会再调用执行函数。</li>
+<li>如果没有符合条件的元素返回 -1</li>
+</ul>
+<p>（1） findIndex() 对于空数组，函数是不会执行的。</p>
+<p>（2）findIndex() 并没有改变数组的原始值。</p>
+<h3 id="4-1-webpack配置css单独分离打包"><a href="#4-1-webpack配置css单独分离打包" class="headerlink" title="4-1 webpack配置css单独分离打包"></a>4-1 webpack配置css单独分离打包</h3><p>一、npm i extract-text-webpack-plugin，把非javascript的文件打包</p>
+<p>二、webpack的devserver不能用chunkHash，不然是会报错的。</p>
+<p>三、vue-loader处理中，组件中的样式，组件显示的时候，样式才会显示，异步加载组件时，css也异步加载过来。</p>
+<h3 id="4-2-webpack区分打包类库代码及hash优化"><a href="#4-2-webpack区分打包类库代码及hash优化" class="headerlink" title="4-2 webpack区分打包类库代码及hash优化"></a>4-2 webpack区分打包类库代码及hash优化</h3><p>一、hash和chunkhash的区别：</p>
+<p>整个应用是同一个hash</p>
+<p>entry里的节点对应不同的chunkhash</p>
+<p>如果是单独打包就用chunkhash</p>
+<p>二、name:runtime：生成在app.js的内容，有新的模块加入时，webpack会给每个内容加上一个Id,可能插入在中间，所以id都会改变</p>
+<h3 id="5-1-课程总结"><a href="#5-1-课程总结" class="headerlink" title="5-1 课程总结"></a>5-1 课程总结</h3><p>一、vue1.0支持html引入vue.js，2.0基本已经把这个功能舍弃，提倡vue打包webapp。</p>
+<p>jsx是在vue2.0才提供的。</p>
+<p>二、vue生态环境：vue-router, vuex</p>
+<p>三、理解vue的重点不是api和指令，而是过程。</p>
+<p>template是通过vue-loader解析成render方法，放到对象中。每次vue数据更新，都会重新调用render方法，生成新的html结构，插到dom结构中。</p>
+<p>四、眼界要放宽。学习更多的知识，来完善自己的知识体系。</p>
+<p>五、vue是双向绑定框架，通过v-model进行数据的绑定。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/25/cookie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2092,134 +2300,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/27/常见命令及explainshell.com 网站简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shi qiang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Martin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/27/常见命令及explainshell.com 网站简介/" itemprop="url">ls cat mv touch 如何使用以及 explainshell.com 网站简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-27T22:12:22+08:00">
-                2018-06-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>显示指定目录下的文件和目录，默认为当前目录。</p>
-<p>-a 显示所有文件及目录 (ls内定将文件名或目录名称开头为”.”的视为隐藏档，不会列出)<br><br>-l 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出<br><br>-r 将文件以相反次序显示(原定依英文字母次序)<br><br>-t 将文件依建立时间之先后次序列出<br><br>-A 同 -a ，但不列出 “.” (目前目录) 及 “..” (父目录)<br><br>-F 在列出的文件名称后加一符号；<br><br>-R 若目录下有文件，则以下之文件亦皆依序列出</p>
-<h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><p>用来查看文件内容。</p>
-<p>-n 或 –number：由 1 开始对所有输出的行数编号。<br><br>-b 或 –number-nonblank：和 -n 相似，只不过对于空白行不编号。</p>
-<h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2><p> 移动文件，可用来重命名文件。</p>
-<p> -i：交互式。<br><br> -f：强制覆盖文件。</p>
-<h2 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h2><p> 修改时间戳，文件不存在则创建文件,当直接使用命令去touch一个文件的时候，修改的是所有的时间戳。</p>
-<p> -c：指定的文件路径不存在时不予以创建。<br><br> -a：仅修改access time.<br><br> -m：仅修改modify time.</p>
-<h2 id="如何使用explainshell-com-？"><a href="#如何使用explainshell-com-？" class="headerlink" title="如何使用explainshell.com ？"></a>如何使用explainshell.com ？</h2><p> 当我们不知道某个命令是什么意思的时候，又不愿意去查看man手册的时候，就可以使用这个网站了，简洁明了<del>~</del>~（前提要是能FQ）。<br> <img src="\Users\Public\Pictures" alt="avatar"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2270,7 +2350,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
