@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="canvas画板 这是我做的第一个项目画板，故记录知识点方便以后回顾。有两种方式：div 和 canvas，选择了用 canvas 做。  关键词：原生 JavaScript、Canvas、移动端、SVG、特性检测 描述：该项目使用原生 JS 实现，主要调用 Canvas API，实现了线粗、调色、橡皮擦、保存等功能。用 context.clearRect() 实现了 橡皮檫和清屏的功能，用 cl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas画板">
+<meta property="og:url" content="http://yoursite.com/2018/11/17/canvas画板/index.html">
+<meta property="og:site_name" content="Martin">
+<meta property="og:description" content="canvas画板 这是我做的第一个项目画板，故记录知识点方便以后回顾。有两种方式：div 和 canvas，选择了用 canvas 做。  关键词：原生 JavaScript、Canvas、移动端、SVG、特性检测 描述：该项目使用原生 JS 实现，主要调用 Canvas API，实现了线粗、调色、橡皮擦、保存等功能。用 context.clearRect() 实现了 橡皮檫和清屏的功能，用 cl">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-17T12:27:29.989Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="canvas画板">
+<meta name="twitter:description" content="canvas画板 这是我做的第一个项目画板，故记录知识点方便以后回顾。有两种方式：div 和 canvas，选择了用 canvas 做。  关键词：原生 JavaScript、Canvas、移动端、SVG、特性检测 描述：该项目使用原生 JS 实现，主要调用 Canvas API，实现了线粗、调色、橡皮擦、保存等功能。用 context.clearRect() 实现了 橡皮檫和清屏的功能，用 cl">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/17/canvas画板/"/>
+
+
+
+
+
+  <title>canvas画板 | Martin</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Martin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/17/canvas画板/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shi qiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Martin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">canvas画板</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-17T20:18:31+08:00">
+                2018-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="canvas画板"><a href="#canvas画板" class="headerlink" title="canvas画板"></a>canvas画板</h2><blockquote>
+<p>这是我做的第一个项目画板，故记录知识点方便以后回顾。有两种方式：div 和 canvas，选择了用 canvas 做。</p>
+</blockquote>
+<p><strong>关键词：</strong>原生 JavaScript、Canvas、移动端、SVG、特性检测</p>
+<p><strong>描述：</strong>该项目使用原生 JS 实现，主要调用 Canvas API，实现了线粗、调色、橡皮擦、保存等功能。用 context.clearRect() 实现了 橡皮檫和清屏的功能，用 className 切换实现了笔的线粗、颜色切换的功能，用 meta:vp、特性检测、ontouch 事件实现了触屏设备与 web 端兼容。</p>
+<p><strong>源码链接：</strong></p>
+<p><a href="https://github.com/Tikktoo/canvas?1542456503380" target="_blank" rel="noopener">https://github.com/Tikktoo/canvas?1542456503380</a></p>
+<p><strong>预览链接：</strong></p>
+<p><a href="https://tikktoo.github.io/canvas/index2.html" target="_blank" rel="noopener">https://tikktoo.github.io/canvas/index2.html</a></p>
+<h2 id="一、div-VS-canvas-选哪个？"><a href="#一、div-VS-canvas-选哪个？" class="headerlink" title="一、div VS canvas 选哪个？"></a><strong>一、div VS canvas 选哪个？</strong></h2><p>如果用 div 做画板，那么思路是这样的：</p>
+<ul>
+<li>document.onmousedown：鼠标点击画一个圆，获取点击的坐标；创建 div；设置 div 样式；</li>
+<li>document.onmousemove：移动创建圆：把 1 复制到 2 里，然后使用标记，未点击是 false，点击是 true，松开是 false；</li>
+<li>doucment.onmouseup：鼠标松开，完成绘绘画；</li>
+</ul>
+<p>然后缺点是<strong>快速移动无法形成连续的圆</strong>，so 不能用 div 来做画板。而 canvas 解决了这个不足的地方。</p>
+<p><strong>原理：鼠标点击形成一个‘填充圆’并获取坐标，鼠标移动后会形成另一个‘填充圆’获取另一个坐标，然后两坐标用直线相连。</strong></p>
+<p>让我们看下如何一步步用 canvas 实现画板。</p>
+<h2 id="二、cavans-提供的画图-API"><a href="#二、cavans-提供的画图-API" class="headerlink" title="二、cavans 提供的画图 API"></a><strong>二、cavans 提供的画图 API</strong></h2><p><strong>1、使用 canvas</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var canvas=document.getElementById(&apos;canvas&apos;);</span><br><span class="line">var context=canvas.getContext(&apos;2d&apos;);</span><br></pre></td></tr></table></figure>
+<p><strong>2、封装一个画实心圆的函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function drawCir(x,y)&#123;</span><br><span class="line">    context.beginPath()</span><br><span class="line">    context.arc(x,y,0.1,0,Math.PI*2)</span><br><span class="line">    context.fill();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3、封装一条画直线的函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function drawLine(x1,y1,x2,y2)&#123;</span><br><span class="line">    context.beginPath();</span><br><span class="line">    context.lineWidth=2;</span><br><span class="line">    context.moveTo(x1,y1);</span><br><span class="line">    context.lineTo(x2,y2);</span><br><span class="line">    context.stroke();</span><br><span class="line">    context.closePath();  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意 context.cloasePath()，表示关闭路径，线宽在开始和结束只能用一次，如果有多个颜色就要进行多次的开始和结束。</p>
+<p><strong>4、删除内容，橡皮檫</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">context.clearRect(x坐标,y坐标,长,宽);</span><br><span class="line">//x和y的坐标都可以动态获取</span><br></pre></td></tr></table></figure>
+<h2 id="三、然后怎么做？"><a href="#三、然后怎么做？" class="headerlink" title="三、然后怎么做？"></a><strong>三、然后怎么做？</strong></h2><p><strong>1、首先我们要给画板设置视口宽高，并封装成函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function setCanvasSize()&#123;</span><br><span class="line">    var pageWidth=document.documentElement.clientWidth;</span><br><span class="line">    var pageHeight=document.documentElement.clientHeight;</span><br><span class="line">    canvas.width = pageWidth;</span><br><span class="line">    canvas.height = pageHeight;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>如果我们窗口变化了，可以调用这个函数重新设置 canvas 的宽高。</p>
+<p><strong>2、实现能画图</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">var using=false;</span><br><span class="line">var lastPoint=&#123;</span><br><span class="line">    x:undefined,y:undefined</span><br><span class="line">&#125;</span><br><span class="line">//鼠标点击监听</span><br><span class="line">canvas.onmousedown=function(aaa)&#123;</span><br><span class="line"> var x=aaa.clientX;</span><br><span class="line"> var y=aaa.clientY;</span><br><span class="line">    using=true;</span><br><span class="line">    lastPoint=&#123;x:x,y:y&#125;;</span><br><span class="line"> if(eraserEnabled)&#123;</span><br><span class="line">        context.clearRect(x-10,y-10,20,20);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        drawCir(x,y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//鼠标移动监听</span><br><span class="line">canvas.onmousemove=function(aaa)&#123;</span><br><span class="line"> var x=aaa.clientX;</span><br><span class="line"> var y=aaa.clientY;</span><br><span class="line"> var newPoint=&#123;x:x,y:y&#125;</span><br><span class="line"> if(using)&#123;</span><br><span class="line"> if(eraserEnabled)&#123;</span><br><span class="line">            context.clearRect(x-10,y-10,20,20);</span><br><span class="line">      &#125;else&#123;</span><br><span class="line">            drawCir(x,y);</span><br><span class="line">            drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)</span><br><span class="line">            lastPoint=newPoint;      </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;       </span><br><span class="line"></span><br><span class="line">//鼠标松开监听</span><br><span class="line">canvas.onmouseup=function(aaa)&#123;</span><br><span class="line">    using=false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，做一个 “锁” 来切换点击状态 var using=false。</p>
+<p><strong>3、引入 SVG：铅笔、橡皮、清屏、下载</strong></p>
+<p>在 iconfont 里找到自己想要的 icon，按照说明帮助使用 smybol 引用：</p>
+<p>Iconfont - 阿里巴巴矢量图标库iconfont.cn</p>
+<p><strong>4、通过点击事件用 js 切换 className</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xxx.onclick=function()&#123;</span><br><span class="line">    xxx.classList.add(&apos;active&apos;);</span><br><span class="line">    yyy.classList.remove(&apos;active&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解释：给一个元素的状态激活增加 active，给另一个元素的取消激活状态移除 active。xxx 代表点击事件监听的元素，比如 pen 的粗细切换、颜色切换，pen 和 eraser 切换进行红色高亮。</p>
+<p><strong>5、增加清屏功能</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clear.onclick=function()&#123;</span><br><span class="line">     context.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>6、增加下载图片功能</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">download.onclick = function()&#123;</span><br><span class="line">    var url = canvas.toDataURL(&apos;image/png&apos;);</span><br><span class="line">    var a = document.createElement(&apos;a&apos;);</span><br><span class="line">    document.body.appendChild(a);</span><br><span class="line">    a.href=url;</span><br><span class="line">    a.download=&apos;my drawing&apos;;</span><br><span class="line">    a.click();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>7、解决移动页面宽度（在手机能看）</strong></p>
+<p>在 head 加一个 meta:vp:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,</span><br><span class="line">initial-scale=1,user-scalable=no,</span><br><span class="line">maximum-scale=1.0,minimum-scale=1.0&quot;/&gt;</span><br><span class="line"></span><br><span class="line">页面宽度=移动宽度 ：width=device-width</span><br><span class="line">用户不可以缩放：user-scalable=no</span><br><span class="line">缩放比例：initial-scale=1</span><br><span class="line">最大缩放比例：maximum-scale=1.0</span><br><span class="line">最小缩放比例：minimum-scale=1.0</span><br></pre></td></tr></table></figure>
+<p><strong>8、特性检测没有 onmouse 事件，用 ontouch 事件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.ontouchstart =function()&#123;&#125;</span><br><span class="line">document.ontouchmove = function()&#123;&#125;</span><br><span class="line">document.ontouchend = function()&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>9、特性检测</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if(document.body.ontouchstart!==undefined)&#123;</span><br><span class="line">   //是触屏设备</span><br><span class="line">&#125;else&#123;</span><br><span class="line">   //不是触屏设备</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>四、解决一些问题</strong></p>
+<p>1、当窗口变大变小，能够保证画板自适应的放缩</p>
+<p>这里需要注意的是，onresize 响应事件处理中，获取到的页面尺寸参数是变更后的参数。</p>
+<p>2、使用了 svg，那么 file 协议的预览就无法看到图片，所以打开 node.js 输入命令行安装一个 http 协议预览的功能，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g http-server</span><br></pre></td></tr></table></figure>
+<p>运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http-server -c-1 //清除缓存预览</span><br><span class="line">hs -c-1 //与上面等价</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/07/Vue-Webpack-ToDoList课程笔记/" rel="next" title="Vue-Webpack-ToDoList课程笔记">
+                <i class="fa fa-chevron-left"></i> Vue-Webpack-ToDoList课程笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shi qiang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#canvas画板"><span class="nav-number">1.</span> <span class="nav-text">canvas画板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、div-VS-canvas-选哪个？"><span class="nav-number">2.</span> <span class="nav-text">一、div VS canvas 选哪个？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、cavans-提供的画图-API"><span class="nav-number">3.</span> <span class="nav-text">二、cavans 提供的画图 API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、然后怎么做？"><span class="nav-number">4.</span> <span class="nav-text">三、然后怎么做？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shi qiang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
