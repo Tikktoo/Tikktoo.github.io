@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/17/移动端如何做适配/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/11/17/移动端如何做适配/" itemprop="url">移动端是怎么做适配的？</a></h1>
         
 
         <div class="post-meta">
@@ -980,7 +980,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/画一只皮卡丘/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/11/06/画一只皮卡丘/" itemprop="url">画一只皮卡丘</a></h1>
         
 
         <div class="post-meta">
@@ -1088,7 +1088,21 @@
 
 <h3>2、代码高亮prism.js</h3>
 
-<p>官网地址：</p><a href="http://prismjs.com/index.html" target="_blank" rel="noopener">prism.js</a><br><br><ul><br>    <li>下载prism的js和css</li><br>    <li>分别插入head和body里</li><br>    <li>代码引用，并修改成自己需要的样式</li><br></ul><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// The code snippet you want to highlight, as a string</span><br><span class="line">var code = &quot;var data = 1;&quot;;</span><br><span class="line">// Returns a highlighted HTML string</span><br><span class="line">var html = Prism.highlight(code, Prism.languages.javascript, &apos;javascript&apos;);</span><br></pre></td></tr></table></figure><br><br><h3>3、调速</h3><br><br><ul><br>    <li>在html创建3个button</li><br></ul><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;buttons&quot;&gt;</span><br><span class="line">    &lt;button class=&quot;slow&quot;&gt;慢速&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;normal&quot;&gt;正常&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;fast&quot;&gt;快速&lt;/button&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure><br><br> <ul><br>    <li>引入jq，并使用事件委托</li><br></ul><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var $buttons = $(&quot;.buttons&quot;)</span><br><span class="line">$buttons.on(&apos;click&apos;,&apos;button&apos;,function(e)&#123;</span><br><span class="line">   var $button =$(e.currentTarget)</span><br><span class="line">   var speed = $button.attr(&apos;class&apos;)</span><br><span class="line">   switch(speed)&#123;</span><br><span class="line">     case &apos;slow&apos;:</span><br><span class="line">        during = 100</span><br><span class="line">        break;</span><br><span class="line">     case &apos;normal&apos;:</span><br><span class="line">        during = 30</span><br><span class="line">        break;</span><br><span class="line">     case &apos;fast&apos;:</span><br><span class="line">        during = 1</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><br><br><p>基本上重要的逻辑已经完成了，然后就是不断的调试修改和完善。</p>
+<p></p><p>官网地址：</p><a href="http://prismjs.com/index.html" target="_blank" rel="noopener">prism.js</a><p></p>
+<ul><br>    <li>下载prism的js和css</li><br>    <li>分别插入head和body里</li><br>    <li>代码引用，并修改成自己需要的样式</li><br></ul>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// The code snippet you want to highlight, as a string</span><br><span class="line">var code = &quot;var data = 1;&quot;;</span><br><span class="line">// Returns a highlighted HTML string</span><br><span class="line">var html = Prism.highlight(code, Prism.languages.javascript, &apos;javascript&apos;);</span><br></pre></td></tr></table></figure>
+<h3>3、调速</h3>
+
+<ul>
+<li>在html创建3个button</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;buttons&quot;&gt;</span><br><span class="line">   &lt;button class=&quot;slow&quot;&gt;慢速&lt;/button&gt;</span><br><span class="line">   &lt;button class=&quot;normal&quot;&gt;正常&lt;/button&gt;</span><br><span class="line">   &lt;button class=&quot;fast&quot;&gt;快速&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>引入jq，并使用事件委托</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var $buttons = $(&quot;.buttons&quot;)</span><br><span class="line">$buttons.on(&apos;click&apos;,&apos;button&apos;,function(e)&#123;</span><br><span class="line">   var $button =$(e.currentTarget)</span><br><span class="line">   var speed = $button.attr(&apos;class&apos;)</span><br><span class="line">   switch(speed)&#123;</span><br><span class="line">     case &apos;slow&apos;:</span><br><span class="line">        during = 100</span><br><span class="line">        break;</span><br><span class="line">     case &apos;normal&apos;:</span><br><span class="line">        during = 30</span><br><span class="line">        break;</span><br><span class="line">     case &apos;fast&apos;:</span><br><span class="line">        during = 1</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>基本上重要的逻辑已经完成了，然后就是不断的调试修改和完善。</p>
 
           
         
