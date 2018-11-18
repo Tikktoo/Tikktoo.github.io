@@ -229,6 +229,848 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/JS 里的数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shi qiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Martin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/27/JS 里的数据类型/" itemprop="url">JS 里的数据类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-27T22:24:22+08:00">
+                2018-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="简单数据类型"><a href="#简单数据类型" class="headerlink" title="简单数据类型"></a>简单数据类型</h2><h5 id="1-数值-number"><a href="#1-数值-number" class="headerlink" title="1. 数值(number)"></a>1. 数值(number)</h5><blockquote>
+<p>var a = 011 // a === 9，<strong>0开头代表8进制！</strong><br>var b = 0b11 // b === 3，0b开头代表2进制<br>var c = 0x11 // c === 17，0x代表16进制</p>
+</blockquote>
+<h5 id="2-字符串-string"><a href="#2-字符串-string" class="headerlink" title="2. 字符串(string)"></a>2. 字符串(string)</h5><blockquote>
+<p>JavaScript 认为’𝌆’的长度为2，而不是1。<br>对于码点在U+10000到U+10FFFF之间的字符，JavaScript 总是认为它们是两个字符（length属性为2）。所以处理的时候，必须把这一点考虑在内，也就是说，JavaScript 返回的字符串长度可能是不正确的。</p>
+</blockquote>
+<h5 id="3-布尔值-boolean"><a href="#3-布尔值-boolean" class="headerlink" title="3. 布尔值(boolean)"></a>3. 布尔值(boolean)</h5><h5 id="4-symbol"><a href="#4-symbol" class="headerlink" title="4. symbol"></a>4. symbol</h5><blockquote>
+<p>用来生成一个全局唯一的值</p>
+</blockquote>
+<h5 id="5-undefined-6-null"><a href="#5-undefined-6-null" class="headerlink" title="5. undefined 6. null"></a>5. undefined 6. null</h5><blockquote>
+<p>null和undefined都表示没有值，一般来说<br>1.若一个变量没有赋值，例：var a;，则a的值就是undefined<br>2.若创建一个对象，现在还不想赋值，则可以var obj = null;<br>3.若一个number、string不想赋值，则可以参照第一条</p>
+</blockquote>
+<h5 id="7-对象-object"><a href="#7-对象-object" class="headerlink" title="7. 对象(object)"></a>7. 对象(object)</h5><p>前面六种是简单类型或基本类型，对象是合成类型<br>对象可以分成：<br>> 狭义的对象<br>> 数组<br>> 函数</p>
+<blockquote>
+<p>当你在遍历对象的时候</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt; var person = &#123;name:&apos;pyz&apos;,age:18&#125;</span><br><span class="line">&gt; &gt;for(var key in person)&#123;</span><br><span class="line">&gt; &gt;   console.log(person[key]); &gt;//console.log(person.key);</span><br><span class="line">&gt; &gt;&#125;</span><br><span class="line">&gt; &gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+<blockquote>
+<p>用person.key和person[key]是不同的，person.key代表person里有一个键名为key的属性，key被当作字符串，会出现undefined。而且数值键名也不能用点，会被当作小数点。<br><code>obj.123 //报错</code><br>只能用person[key]来表示，因为使用方括号运算符时key会被当作变量来处理。</p>
+</blockquote>
+<blockquote>
+<p>bug1: typeof null //object<br>bug2: typeof function //function，function也是object的一种，但function有自己的原型</p>
+</blockquote>
+<blockquote>
+<p>{foo:123}，javascript理解为语句（即代码块）<br>({foo:123})，JavaScript理解为对象<br>在eval语句（作用是对字符串求值）中<br>eval(‘{foo: 123}’) // 123<br>eval(‘({foo: 123})’) // {foo: 123}</p>
+</blockquote>
+<blockquote>
+<p>一般遍历对象自身属性时结合使用hasOwnProperty方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;var person = &#123; name: &apos;老彭&apos; &#125;;</span><br><span class="line">&gt; &gt;for (var key in person) &#123;</span><br><span class="line">&gt; &gt;  if (person.hasOwnProperty(key)) &#123;</span><br><span class="line">&gt; &gt;    console.log(key);</span><br><span class="line">&gt; &gt;  &#125;</span><br><span class="line">&gt; &gt;&#125;</span><br><span class="line">&gt; &gt;// name</span><br><span class="line">&gt; &gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+<blockquote>
+<p>查看一个对象本身的所有属性，也可以使用Object.keys方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;var obj = &#123;</span><br><span class="line">&gt; &gt;  key1: 1,</span><br><span class="line">&gt; &gt;  key2: 2</span><br><span class="line">&gt; &gt;&#125;;</span><br><span class="line">&gt; &gt;</span><br><span class="line">&gt; &gt;Object.keys(obj);</span><br><span class="line">&gt; &gt;// [&apos;key1&apos;, &apos;key2&apos;]</span><br><span class="line">&gt; &gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+<h1 id="5-数值"><a href="#5-数值" class="headerlink" title="5. 数值"></a>5. 数值</h1><ol>
+<li><p>JavaScript里不要直接比较小数，因为浮点数不是精确的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0.1 + 0.2 === 0.3</span><br><span class="line">// false</span><br><span class="line"></span><br><span class="line">0.3 / 0.1</span><br><span class="line">// 2.9999999999999996</span><br><span class="line"></span><br><span class="line">(0.3 - 0.2) === (0.2 - 0.1)</span><br><span class="line">// false</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JavaScript 对15位的十进制整数都可以精确处理，大于15位就不行了</p>
+</li>
+<li><p>以下两种情况，JavaScript 会自动将数值转为科学计数法表示<br>（1）小数点前的数字多于21位。<br>（2）小数点后的零多于5个。</p>
+</li>
+<li><p>JavaScript 对整数提供四种进制的表示方法：十进制、十六进制、八进制、二进制。默认情况下，JavaScript 内部会自动将八进制、十六进制、二进制转为十进制。</p>
+<blockquote>
+<p>十进制：没有前导0的数值。<br>八进制：有前缀0o或0O的数值，或者有前导0、且只用到0-7的八个阿拉伯数字的数值。<br>十六进制：有前缀0x或0X的数值。<br>二进制：有前缀0b或0B的数值。</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="6-字符串"><a href="#6-字符串" class="headerlink" title="6. 字符串"></a>6. 字符串</h1><p>若字符串要换行的话，可以这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos;a\</span><br><span class="line">b\</span><br><span class="line">c&apos;</span><br><span class="line">//‘abc’</span><br></pre></td></tr></table></figure>
+<p><strong>重点是\后只能加回车，不能有任何空格</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/CSS布局及布局小技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shi qiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Martin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/08/CSS布局及布局小技巧/" itemprop="url">CSS布局及布局小技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-08T09:25:10+08:00">
+                2018-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、水平居中"><a href="#一、水平居中" class="headerlink" title="一、水平居中"></a>一、水平居中</h3><h4 id="1-文本-行内-行内块级▲"><a href="#1-文本-行内-行内块级▲" class="headerlink" title="(1)文本/行内/行内块级▲"></a>(1)文本/行内/行内块级▲</h4><p>原理：text-align只控制行内内容(文字、行内元素、行内块级元素)如何相对他的块父元素对齐</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;text-align: center;&#125;</span><br></pre></td></tr></table></figure>
+<p>优缺点</p>
+<ul>
+<li><p>优点：简单快捷，容易理解，兼容性非常好</p>
+</li>
+<li><p>缺点：只对行内内容有效；属性会继承影响到后代行内内容；如果子元素宽度大于父元素宽度则无效，但是后代行内内容中宽度小于设置text-align属性的元素宽度的时候，也会继承水平居中</p>
+</li>
+</ul>
+<h4 id="2-单个块级元素▲"><a href="#2-单个块级元素▲" class="headerlink" title="(2)单个块级元素▲"></a>(2)单个块级元素▲</h4><p>原理：根据<a href="https://www.w3.org/TR/CSS21/visudet.html#Computing_widths_and_margins" target="_blank" rel="noopener">规范</a>介绍得很清楚了，有这么一种情况：在margin有节余的同时如果左右margin设置了auto，将会均分剩余空间。另外，如果上下的margin设置了auto，其计算值为0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#son&#123;</span><br><span class="line"></span><br><span class="line">    width: 100px; /*必须定宽*/</span><br><span class="line"></span><br><span class="line">    margin: 0 auto;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优缺点</p>
+<ul>
+<li><p>优点：简单；兼容性好</p>
+</li>
+<li><p>缺点：必须定宽，并且值不能为auto；宽度要小于父元素，否则无效</p>
+</li>
+</ul>
+<h4 id="3-多个块级元素"><a href="#3-多个块级元素" class="headerlink" title="(3)多个块级元素"></a>(3)多个块级元素</h4><p>原理：text-align只控制行内内容(文字、行内元素、行内块级元素)如何相对他的块父元素对齐</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;text-align: center;&#125;</span><br><span class="line"></span><br><span class="line">.son&#123;display: inline-block;&#125; /*改为行内或者行内块级形式，以达到text-align对其生效*/</span><br></pre></td></tr></table></figure>
+<p>优缺点</p>
+<ul>
+<li><p>优点：简单，容易理解，兼容性非常好</p>
+</li>
+<li><p>缺点：只对行内内容有效；属性会继承影响到后代行内内容；块级改为inline-block换行、空格会产生元素间隔</p>
+</li>
+</ul>
+<h4 id="4-使用position实现▲"><a href="#4-使用position实现▲" class="headerlink" title="(4)使用position实现▲"></a>(4)使用position实现▲</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/*原理：子绝父相，top、right、bottom、left的值是相对于父元素尺寸的，然后margin或者transform是相对于自身尺寸的，组合使用达到水平居中的目的*/</span><br><span class="line">#parent&#123;</span><br><span class="line">    height: 150px;</span><br><span class="line">    position: relative;  /*父相*/</span><br><span class="line">&#125;</span><br><span class="line">#son&#123;</span><br><span class="line">    position: absolute;  /*子绝*/</span><br><span class="line">    top: 50%;  /*父元素高度一半,这里等同于top:75px;*/</span><br><span class="line">    transform: translateY(-50%);  /*自身高度一半,这里等同于margin-top:-25px;*/</span><br><span class="line">    height: 50px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*优缺点</span><br><span class="line">- 优点：使用margin-top兼容性好；不管是块级还是行内元素都可以实现</span><br><span class="line">- 缺点：代码较多；脱离文档流；使用margin-top需要知道高度值；使用transform兼容性不好（ie9+）*/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">/*原理：当top、bottom为0时,margin-top&amp;bottom设置auto的话会无限延伸占满空间并且平分*/</span><br><span class="line">#parent&#123;position: relative;&#125;</span><br><span class="line">#son&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    margin: auto 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    height: 50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>/*优缺点</p>
+<ul>
+<li>优点：简单;兼容性较好(ie8+)</li>
+<li>缺点：脱离文档流*/</li>
+</ul>
+<h4 id="5-任意个元素-flex"><a href="#5-任意个元素-flex" class="headerlink" title="(5)任意个元素(flex)"></a>(5)任意个元素(flex)</h4><p>原理：就是设置当前主轴对齐方式为居中。说不上为什么，flex无非就是主轴侧轴是重点，然后就是排列方式的设置，可以去看看文末的flex阅读推荐</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    justify-content: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优缺点</p>
+<ul>
+<li>优点：功能强大；简单方便；容易理解</li>
+<li>缺点：PC端<a href="https://caniuse.com/#search=flex" target="_blank" rel="noopener">兼容性不好</a>，移动端（Android4.0+）</li>
+<li>flex务必带上兼容，写法请参考文末阅读推荐，也可以使用autoprefixer</li>
+</ul>
+<h4 id="★本章小结："><a href="#★本章小结：" class="headerlink" title="★本章小结："></a>★本章小结：</h4><ul>
+<li>对于水平居中，我们应该先考虑，哪些元素有自带的居中效果，最先想到的应该就是 <code>text-align:center</code> 了，但是这个只对行内内容有效，所以我们要使用 <code>text-align:center</code> 就必须将子元素设置为 <code>display: inline;</code> 或者 <code>display: inline-block;</code> ； </li>
+<li>其次就是考虑能不能用<code>margin: 0 auto;</code> ，因为这都是一两句代码能搞定的事，实在不行就是用绝对定位去实现了；</li>
+<li>移动端能用flex就用flex，简单方便，灵活并且功能强大，无愧为网页布局的一大利器！务必带上兼容，写法可参考文末阅读推荐，也可以使用Autoprefixer。</li>
+</ul>
+<p><strong>&nbsp;</strong></p>
+<h3 id="二、垂直居中"><a href="#二、垂直居中" class="headerlink" title="二、垂直居中"></a><strong><strong>二、垂直居中</strong></strong></h3><h4 id="1-单行文本-行内-行内块级▲"><a href="#1-单行文本-行内-行内块级▲" class="headerlink" title="(1)单行文本/行内/行内块级▲"></a>(1)单行文本/行内/行内块级▲</h4><p>原理：line-height的最终表现是通过inline box实现的，而无论inline box所占据的高度是多少（无论比文字大还是比文字小），其占据的空间都是与文字内容公用水平中垂线的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;</span><br><span class="line">    height: 150px;</span><br><span class="line">    line-height: 150px;  /*与height等值*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优缺点</p>
+<ul>
+<li>优点：简单；兼容性好</li>
+<li>缺点：只能用于单行行内内容；要知道高度的值</li>
+</ul>
+<h4 id="2-多行文本-行内-行内块级"><a href="#2-多行文本-行内-行内块级" class="headerlink" title="(2)多行文本/行内/行内块级"></a>(2)多行文本/行内/行内块级</h4><p>原理同上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;  /*或者用span把所有文字包裹起来，设置display：inline-block转换成图片的方式解决*/</span><br><span class="line">    height: 150px;</span><br><span class="line">    line-height: 30px;  /*元素在页面呈现为5行,则line-height的值为height/5*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优缺点</p>
+<ul>
+<li>优点：简单；兼容性好</li>
+<li>缺点：只能用于行内内容；需要知道高度和最终呈现多少行来计算出line-height的值，建议用span包裹多行文本</li>
+</ul>
+<h4 id="3-图片▲"><a href="#3-图片▲" class="headerlink" title="(3)图片▲"></a>(3)图片▲</h4><p>原理：<a href="http://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/" target="_blank" rel="noopener">vertical-align和line-height的基友关系</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;</span><br><span class="line">    height: 150px;</span><br><span class="line">    line-height: 150px;</span><br><span class="line">    font-size: 0;</span><br><span class="line">&#125;</span><br><span class="line">img#son&#123;vertical-align: middle;&#125; /*默认是基线对齐，改为middle*/</span><br></pre></td></tr></table></figure>
+<p>优缺点</p>
+<ul>
+<li>优点：简单；兼容性好</li>
+<li>缺点：需要添加<code>font-size: 0;</code> 才可以完全的垂直居中；不过需要注意html中#parent包裹img之间需要有换行或空格；熟悉<code>line-height</code>和<code>vertical-align</code>的基友关系较难</li>
+</ul>
+<h4 id="4-单个块级元素"><a href="#4-单个块级元素" class="headerlink" title="(4)单个块级元素"></a>(4)单个块级元素</h4><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;son&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="1-使用tabel-cell实现"><a href="#1-使用tabel-cell实现" class="headerlink" title="(1) 使用tabel-cell实现:"></a>(1) 使用tabel-cell实现:</h5><p>原理：CSS Table，使表格内容垂直对齐方式为middle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;</span><br><span class="line">    display: table-cell;</span><br><span class="line">    vertical-align: middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优缺点</p>
+<ul>
+<li>优点：简单；适用于宽度高度未知情况；兼容性好（ie8+）</li>
+<li>缺点：设置tabl-cell的元素，宽度和高度的值设置百分比无效，需要给它的父元素设置<code>display: table;</code> 才生效；table-cell不感知margin，在父元素上设置table-row等属性，也会使其不感知height；设置float或position会对默认布局造成破坏，可以考虑为之增加一个父div定义float等属性；内容溢出时会自动撑开父元素。</li>
+</ul>
+<h5 id="2-使用position实现-▲"><a href="#2-使用position实现-▲" class="headerlink" title="(2) 使用position实现:▲"></a>(2) 使用position实现:▲</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/*原理：子绝父相，top、right、bottom、left的值是相对于父元素尺寸的，然后margin或者transform是相对于自身尺寸的，组合使用达到水平居中的目的*/</span><br><span class="line">#parent&#123;</span><br><span class="line">    height: 150px;</span><br><span class="line">    position: relative;  /*父相*/</span><br><span class="line">&#125;</span><br><span class="line">#son&#123;</span><br><span class="line">    position: absolute;  /*子绝*/</span><br><span class="line">    top: 50%;  /*父元素高度一半,这里等同于top:75px;*/</span><br><span class="line">    transform: translateY(-50%);  /*自身高度一半,这里等同于margin-top:-25px;*/</span><br><span class="line">    height: 50px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*优缺点</span><br><span class="line">- 优点：使用margin-top兼容性好；不管是块级还是行内元素都可以实现</span><br><span class="line">- 缺点：代码较多；脱离文档流；使用margin-top需要知道高度值；使用transform兼容性不好（ie9+）*/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">/*原理：当top、bottom为0时,margin-top&amp;bottom设置auto的话会无限延伸占满空间并且平分*/</span><br><span class="line">#parent&#123;position: relative;&#125;</span><br><span class="line">#son&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    margin: auto 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    bottom: 0;</span><br><span class="line">    height: 50px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*优缺点</span><br><span class="line">- 优点：简单;兼容性较好(ie8+)</span><br><span class="line">- 缺点：脱离文档流*/</span><br></pre></td></tr></table></figure>
+<h5 id="3-使用flex实现"><a href="#3-使用flex实现" class="headerlink" title="(3) 使用flex实现:"></a>(3) 使用flex实现:</h5><p>原理：flex设置排列方式、对齐方式罢了，请查阅文末flex阅读推荐</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    align-items: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">#parent&#123;display: flex;&#125;</span><br><span class="line">#son&#123;align-self: center;&#125;</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line">/*原理：这个尚未搞清楚，应该是flex使margin上下边界无限延伸至剩余空间并平分了*/</span><br><span class="line">#parent&#123;display: flex;&#125;</span><br><span class="line">#son&#123;margin: auto 0;&#125;</span><br></pre></td></tr></table></figure>
+<p>优缺点</p>
+<ul>
+<li>优点：简单灵活；功能强大</li>
+<li>缺点：PC端<a href="https://caniuse.com/#search=flex" target="_blank" rel="noopener">兼容性不好</a>，移动端（Android4.0+）</li>
+<li>flex务必带上兼容，写法请参考文末阅读推荐，也可以使用autoprefixer</li>
+</ul>
+<h4 id="5-任意个元素-flex-1"><a href="#5-任意个元素-flex-1" class="headerlink" title="(5)任意个元素(flex)"></a>(5)任意个元素(flex)</h4><p>原理：flex设置对齐方式罢了，请查阅文末flex阅读推荐</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    align-items: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">#parent&#123;display: flex;&#125;</span><br><span class="line">.son&#123;align-self: center;&#125;</span><br><span class="line"></span><br><span class="line">或 </span><br><span class="line"></span><br><span class="line">#parent&#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-direction: column;</span><br><span class="line">    justify-content: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优缺点</p>
+<ul>
+<li>优点：简单灵活；功能强大</li>
+<li>缺点：PC端<a href="https://caniuse.com/#search=flex" target="_blank" rel="noopener">兼容性不好</a>，移动端（Android4.0+）</li>
+</ul>
+<h4 id="★本章小结：-1"><a href="#★本章小结：-1" class="headerlink" title="★本章小结："></a>★本章小结：</h4><ul>
+<li>对于垂直居中，最先想到的应该就是 <code>line-height</code> 了，但是这个只能用于行内内容； </li>
+<li>其次就是考虑能不能用<code>vertical-align: middle;</code> ，不过这个一定要熟知原理才能用得顺手，建议看下<a href="http://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/" target="_blank" rel="noopener">vertical-align和line-height的基友关系</a> ；</li>
+<li>然后便是绝对定位，虽然代码多了点，但是胜在适用于不同情况；</li>
+<li>移动端兼容性允许的情况下能用flex就用flex，务必带上兼容，写法可参考文末阅读推荐，也可以使用Autoprefixer。</li>
+</ul>
+<p>&nbsp;</p>
+<h3 id="三、两列布局"><a href="#三、两列布局" class="headerlink" title="三、两列布局"></a>三、两列布局</h3><h4 id="3-1-左列定宽-右列自适应"><a href="#3-1-左列定宽-右列自适应" class="headerlink" title="3.1 左列定宽,右列自适应"></a>3.1 左列定宽,右列自适应</h4><p>效果:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8192053-fd94b0f6660e0a9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h5 id="1-利用float-margin▲"><a href="#1-利用float-margin▲" class="headerlink" title="(1)利用float+margin▲"></a>(1)利用float+margin▲</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#left &#123;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 500px;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">    height: 500px;</span><br><span class="line">    margin-left: 100px; /*设置间隔，大于等于#left的宽度*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：#left左浮动，脱离文档流，#right为了不被#left挡住，设置margin-left大于等于#left的宽度达到视觉上的两栏布局</p>
+<p>优缺点</p>
+<ul>
+<li>优点：代码简单；容易理解；兼容性好</li>
+<li>缺点：#left的宽度和#right的margin-left需要对应且固定</li>
+</ul>
+<h5 id="2-利用float-margin-fix"><a href="#2-利用float-margin-fix" class="headerlink" title="(2)利用float+margin(fix)"></a>(2)利用float+margin(fix)</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;right-fix&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#left &#123;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 500px;</span><br><span class="line">&#125;</span><br><span class="line">#right-fix &#123;</span><br><span class="line">    float: right;</span><br><span class="line">    width: 100%;</span><br><span class="line">    margin-left: -100px; /*正值大于或等于#left的宽度,才能上移一行*/</span><br><span class="line">&#125;</span><br><span class="line">#right&#123;</span><br><span class="line">    margin-left: 100px; /*大于或等于#left的宽度,才不会遮挡#left*/</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">    height: 500px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优缺点</p>
+<ul>
+<li>优点：代码较简单；兼容性好</li>
+<li>缺点：相比（1）的方法，多了一个div，多写了一些代码；不容易理解；margin需要对应好</li>
+</ul>
+<h5 id="3-使用float-overflow▲"><a href="#3-使用float-overflow▲" class="headerlink" title="(3)使用float+overflow▲"></a>(3)使用float+overflow▲</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#left &#123;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 500px;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">    height: 500px;</span><br><span class="line">    overflow: hidden; /*触发bfc达到自适应*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：#left左浮动，#right触发bfc达到自适应</p>
+<p>优缺点：</p>
+<ul>
+<li>优点：代码简单；容易理解；无需关注定宽的宽度，利用bfc达到自适应效果</li>
+<li>缺点：#right设置margin-left需要大于#left的宽度才有效，或者直接给#left设置margin-right</li>
+</ul>
+<h5 id="4-使用table实现"><a href="#4-使用table实现" class="headerlink" title="(4)使用table实现"></a>(4)使用table实现</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    display: table;</span><br><span class="line">    height: 500px;</span><br><span class="line">&#125;</span><br><span class="line">#left &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;background-color: #0f0;&#125;</span><br><span class="line">/*利用单元格自动分配宽度*/</span><br><span class="line">#left,#right&#123;display: table-cell;&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：CSS Table以表格的形式显示</p>
+<p>优缺点：</p>
+<ul>
+<li>优点：代码简单；容易理解；适用于宽度高度未知情况；兼容性好（ie8+）</li>
+<li>缺点：margin失效；设置间隔比较麻烦；设置tabl-cell的元素，宽度和高度的值设置百分比无效，需要给它的父元素设置<code>display: table;</code> 才生效；table-cell不感知margin，在父元素上设置table-row等属性，也会使其不感知height；设置float或position会对默认布局造成破坏，可以考虑为之增加一个父div定义float等属性；内容溢出时会自动撑开父元素</li>
+</ul>
+<h5 id="5-使用position实现"><a href="#5-使用position实现" class="headerlink" title="(5)使用position实现"></a>(5)使用position实现</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;position: relative;&#125;  /*父相*/</span><br><span class="line">#left &#123;</span><br><span class="line">    position: absolute;  /*子绝*/</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 500px;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    position: absolute;  /*子绝*/</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 100px;  /*值大于等于#left的宽度*/</span><br><span class="line">    right: 0;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">    height: 500px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：利用绝对定位算好宽高固定好两个盒子的位置</p>
+<p>优缺点</p>
+<ul>
+<li>优点：容易理解；兼容性好</li>
+<li>代码较多；脱离文档流；左边盒子的width需要对应右边盒子的left值</li>
+</ul>
+<h5 id="6-使用flex实现"><a href="#6-使用flex实现" class="headerlink" title="(6)使用flex实现"></a>(6)使用flex实现</h5><p>html代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 500px;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">#left &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    flex: 1; /*均分了父元素剩余空间*/</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：flex设置排列方式、对齐方式罢了，请查阅文末flex阅读推荐</p>
+<p>优缺点</p>
+<ul>
+<li>优点：简单灵活；功能强大</li>
+<li>缺点：PC端<a href="https://caniuse.com/#search=flex" target="_blank" rel="noopener">兼容性不好</a>，移动端（Android4.0+）</li>
+<li>flex务必带上兼容，写法请参考文末阅读推荐，也可以使用autoprefixer</li>
+</ul>
+<h4 id="3-2-左列自适应-右列定宽"><a href="#3-2-左列自适应-右列定宽" class="headerlink" title="3.2 左列自适应,右列定宽"></a>3.2 左列自适应,右列定宽</h4><p>效果:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8192053-c62fee793ff890df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="1-使用float-margin▲"><a href="#1-使用float-margin▲" class="headerlink" title="(1)使用float+margin▲"></a>(1)使用float+margin▲</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列自适应&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列定宽&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;</span><br><span class="line">    height: 500px;</span><br><span class="line">    padding-left: 100px;  /*抵消#left的margin-left以达到#parent水平居中*/</span><br><span class="line">&#125;</span><br><span class="line">#left &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 500px;</span><br><span class="line">    float: left;</span><br><span class="line">    margin-left: -100px; /*正值等于#right的宽度*/</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    height: 500px;</span><br><span class="line">    width: 100px;</span><br><span class="line">    float: right;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：一个左浮一个右浮，#left宽度100%所以要设置margin-left负值让#right上来一行，然后#parent设置padding-left的正值抵消掉#left的位移，此处换成margin也可以</p>
+<p>优缺点</p>
+<ul>
+<li>优点：代码简单；兼容性好；</li>
+<li>缺点：较难理解；margin或padding的值要对应好；浮动脱离文档流，需要手动清除浮动，否则会产生高度塌陷</li>
+</ul>
+<h5 id="2-使用float-overflow▲"><a href="#2-使用float-overflow▲" class="headerlink" title="(2)使用float+overflow▲"></a>(2)使用float+overflow▲</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列自适应&lt;/div&gt;   &lt;!--顺序要换一下--&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#left &#123;</span><br><span class="line">    overflow: hidden;  /*触发bfc*/</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    margin-left: 10px;  /*margin需要定义在#right中*/</span><br><span class="line">    float: right;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：#right右浮动，#left触发bfc达到自适应</p>
+<p>优缺点：</p>
+<ul>
+<li>优点：代码简单；容易理解；无需关注定宽的宽度，利用bfc达到自适应效果</li>
+<li>缺点：#left设置margin-right需要大于#right的宽度才有效，或者直接给#right设置margin-left</li>
+</ul>
+<h5 id="3-使用table实现"><a href="#3-使用table实现" class="headerlink" title="(3)使用table实现"></a>(3)使用table实现</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列自适应&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列定宽&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 500px;</span><br><span class="line">    display: table;</span><br><span class="line">&#125;</span><br><span class="line">#left &#123;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">    display: table-cell;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">    display: table-cell;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：CSS Table以表格的形式显示</p>
+<p>优缺点：</p>
+<ul>
+<li>优点：代码简单；容易理解；适用于宽度高度未知情况；兼容性好（ie8+）</li>
+<li>缺点：margin失效；设置间隔比较麻烦；设置tabl-cell的元素，宽度和高度的值设置百分比无效，需要给它的父元素设置<code>display: table;</code> 才生效；table-cell不感知margin，在父元素上设置table-row等属性，也会使其不感知height；设置float或position会对默认布局造成破坏，可以考虑为之增加一个父div定义float等属性；内容溢出时会自动撑开父元素</li>
+</ul>
+<h5 id="4-使用position实现"><a href="#4-使用position实现" class="headerlink" title="(4)使用position实现"></a>(4)使用position实现</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列自适应&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列定宽&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;position: relative;&#125;  /*父相*/</span><br><span class="line">#left &#123;</span><br><span class="line">    position: absolute;  /*子绝*/</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    right: 100px;  /*大于等于#rigth的宽度*/</span><br><span class="line">    background-color: #f00;</span><br><span class="line">    height: 500px;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    position: absolute;  /*子绝*/</span><br><span class="line">    top: 0;</span><br><span class="line">    right: 0;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 500px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：利用绝对定位算好宽高固定好两个盒子的位置</p>
+<p>优缺点</p>
+<ul>
+<li>优点：容易理解；兼容性好</li>
+<li>代码较多；脱离文档流；左边盒子的right需要对应右边盒子的width值</li>
+</ul>
+<h5 id="5-使用flex实现"><a href="#5-使用flex实现" class="headerlink" title="(5)使用flex实现"></a>(5)使用flex实现</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列自适应&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列定宽&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;</span><br><span class="line">    height: 500px;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">#left &#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：flex设置排列方式、对齐方式罢了，请查阅文末flex阅读推荐</p>
+<p>优缺点</p>
+<ul>
+<li>优点：简单灵活；功能强大</li>
+<li>缺点：PC端<a href="https://caniuse.com/#search=flex" target="_blank" rel="noopener">兼容性不好</a>，移动端（Android4.0+）</li>
+<li>flex务必带上兼容，写法请参考文末阅读推荐，也可以使用autoprefixer</li>
+</ul>
+<h5 id="6-使用Grid实现"><a href="#6-使用Grid实现" class="headerlink" title="(6)使用Grid实现"></a>(6)使用Grid实现</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列自适应&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列定宽&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#parent &#123;</span><br><span class="line">    height: 500px;</span><br><span class="line">    display: grid;</span><br><span class="line">    grid-template-columns: auto 100px;  /*设定2列,auto换成1fr也行*/</span><br><span class="line">&#125;</span><br><span class="line">#left &#123;background-color: #f00;&#125;</span><br><span class="line">#right &#123;background-color: #0f0;&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：css grid布局，请查看文末的阅读推荐</p>
+<p>优缺点</p>
+<ul>
+<li>优点：灵活划分网格区域；新型布局利器，适用于页面三维布局</li>
+<li>缺点：<a href="https://caniuse.com/#search=grid" target="_blank" rel="noopener">兼容性不好</a>，移动端（Android5.0+）</li>
+</ul>
+<p>&nbsp;</p>
+<h4 id="3-3-一列不定-一列自适应"><a href="#3-3-一列不定-一列自适应" class="headerlink" title="3.3 一列不定,一列自适应"></a>3.3 一列不定,一列自适应</h4><p>(盒子宽度随着内容增加或减少发生变化,另一个盒子自适应)</p>
+<p>效果图:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8192053-939d5de8570ac3a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>变化后:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8192053-7a3e44050ff89cfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="1-使用float-overflow▲"><a href="#1-使用float-overflow▲" class="headerlink" title="(1)使用float+overflow▲"></a>(1)使用float+overflow▲</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列不定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#left &#123;</span><br><span class="line">    margin-right: 10px;</span><br><span class="line">    float: left;  /*只设置浮动,不设宽度*/</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    overflow: hidden;  /*触发bfc*/</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：#left不设宽度左浮动，#right触发bfc达到自适应</p>
+<p>优缺点：</p>
+<ul>
+<li>优点：代码简单，容易理解，无需关注宽度，利用bfc达到自适应效果</li>
+<li>缺点：#right设置margin-left需要大于#left的宽度才有效，或者直接给#left设置margin-right</li>
+</ul>
+<h5 id="2-使用flex实现"><a href="#2-使用flex实现" class="headerlink" title="(2)使用flex实现"></a>(2)使用flex实现</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列不定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;display: flex;&#125;</span><br><span class="line">#left &#123; /*不设宽度*/</span><br><span class="line">    margin-right: 10px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">    flex: 1;  /*均分#parent剩余的部分*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：flex设置排列方式、对齐方式罢了，请查阅文末flex阅读推荐</p>
+<p>优缺点</p>
+<ul>
+<li>优点：简单灵活；功能强大</li>
+<li>缺点：PC端<a href="https://caniuse.com/#search=flex" target="_blank" rel="noopener">兼容性不好</a>，移动端（Android4.0+）</li>
+<li>flex务必带上兼容，写法请参考文末阅读推荐，也可以使用autoprefixer</li>
+</ul>
+<h5 id="3-使用Grid实现"><a href="#3-使用Grid实现" class="headerlink" title="(3)使用Grid实现"></a>(3)使用Grid实现</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列不定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;</span><br><span class="line">    display: grid;</span><br><span class="line">    grid-template-columns: auto 1fr;  /*auto和1fr换一下顺序就是左列自适应,右列不定宽了*/</span><br><span class="line">&#125;</span><br><span class="line">#left &#123;</span><br><span class="line">    margin-right: 10px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：css grid布局，请查看文末的阅读推荐</p>
+<p>优缺点</p>
+<ul>
+<li>优点：灵活划分网格区域；新型布局利器，适用于页面三维布局</li>
+<li>缺点：<a href="https://caniuse.com/#search=grid" target="_blank" rel="noopener">兼容性不好</a>，移动端（Android5.0+）</li>
+</ul>
+<h4 id="★本章小结：-2"><a href="#★本章小结：-2" class="headerlink" title="★本章小结："></a>★本章小结：</h4><ul>
+<li>两列布局我们用得比较多的就是浮动，然后最简单就是把另外那个不是浮动的盒子触发bfc以达到自适应效果就O了。其次就是设置对应固宽值的的一些margin、padding去改变盒子的排布以达到我们的目的； </li>
+<li>除了浮动，我们还可以用绝对定位，计算好宽高、位置去设置样式，这个简单也容易理解，就是脱离文档流并且代码稍微多了一点；</li>
+<li>还有就是css table布局，其实这个挺强大的，也简单，兼容性不错（ie8+），但就是table表现的bug太多，不感知margin之类的一些属性。当然，要是需求足够，完全是可以先考虑这个的；</li>
+<li>移动端兼容性允许的情况下能用flex就用flex，务必带上兼容，写法可参考文末阅读推荐，也可以使用Autoprefixer；</li>
+<li><strong>左列自适应,右列不定宽同理(参考4.1和4.3对应代码示例)。</strong></li>
+</ul>
+<p>&nbsp;</p>
+<h3 id="四、三列布局"><a href="#四、三列布局" class="headerlink" title="四、三列布局"></a>四、三列布局</h3><p>&nbsp;</p>
+<h4 id="4-1-两列定宽-一列自适应"><a href="#4-1-两列定宽-一列自适应" class="headerlink" title="4.1 两列定宽,一列自适应"></a>4.1 两列定宽,一列自适应</h4><p>效果图:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8192053-2a21c66c4dad4f56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="1-使用float-margin"><a href="#1-使用float-margin" class="headerlink" title="(1)使用float+margin"></a>(1)使用float+margin</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;center&quot;&gt;中间定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;min-width: 310px;&#125; /*100+10+200,防止宽度不够,子元素换行*/</span><br><span class="line">#left &#123;</span><br><span class="line">    margin-right: 10px;  /*#left和#center间隔*/</span><br><span class="line">    float: left;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#center&#123;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #eeff2b;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    margin-left: 320px;  /*等于#left和#center的宽度之和加上间隔,多出来的就是#right和#center的间隔*/</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：两个盒子浮动，另一个盒子计算好两个盒子的宽度、间隔之和设置一个margin值</p>
+<p>优缺点</p>
+<ul>
+<li>优点：代码简单；容易理解；兼容性好</li>
+<li>缺点：margin或padding的值要对应好；父元素宽度不够浮动元素会换行</li>
+</ul>
+<h5 id="2-使用float-overflow▲-1"><a href="#2-使用float-overflow▲-1" class="headerlink" title="(2)使用float+overflow▲"></a>(2)使用float+overflow▲</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;center&quot;&gt;中间定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#parent&#123;min-width: 320px;&#125; /*100+10+200+20,防止宽度不够,子元素换行*/</span><br><span class="line">#left &#123;</span><br><span class="line">    margin-right: 10px; /*间隔*/</span><br><span class="line">    float: left;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#center&#123;</span><br><span class="line">    margin-right: 10px; /*在此定义和#right的间隔*/</span><br><span class="line">    float: left;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #eeff2b;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    overflow: hidden;  /*触发bfc*/</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：两个盒子浮动，另一个盒子触发bfc达到自适应</p>
+<p>优缺点：</p>
+<ul>
+<li>优点：代码简单，容易理解，无需关注定宽的宽度，利用bfc达到自适应效果</li>
+<li>缺点：#right设置margin-left需要大于左边两个盒子宽度、间隔之和才有效。或者直接给#center设置margin-right；父元素宽度不够，浮动元素换行</li>
+</ul>
+<h5 id="3-使用position实现▲"><a href="#3-使用position实现▲" class="headerlink" title="(3)使用position实现▲"></a>(3)使用position实现▲</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;center&quot;&gt;中间定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#parent &#123;position: relative;&#125; /*父相*/</span><br><span class="line">#left &#123;</span><br><span class="line">    position: absolute; /*子绝*/</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#center &#123;</span><br><span class="line">    position: absolute; /*子绝*/</span><br><span class="line">    left: 100px;        /*对应#left的width值*/</span><br><span class="line">    top: 0;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #eeff2b;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    position: absolute; /*子绝*/</span><br><span class="line">    left: 300px;        /*对应#left和#center的width值之和*/</span><br><span class="line">    top: 0;</span><br><span class="line">    right: 0;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：计算好盒子的宽度和间隔去设置位置</p>
+<p>优缺点：</p>
+<ul>
+<li>优点：容易理解；兼容性比较好；改变相对灵活</li>
+<li>缺点：需手动计算宽度、间隔之和确定位置；</li>
+</ul>
+<h5 id="4-使用table实现▲"><a href="#4-使用table实现▲" class="headerlink" title="(4)使用table实现▲"></a>(4)使用table实现▲</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;center&quot;&gt;中间定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#parent &#123;</span><br><span class="line">    width: 100%; </span><br><span class="line">    height: 520px; /*抵消上下间距10*2的高度影响*/</span><br><span class="line">    margin: -10px 0;  /*抵消上下边间距10的位置影响*/</span><br><span class="line">    display: table;</span><br><span class="line">    /*左右两边间距无法消除,子元素改用padding设置盒子间距就没有这个问题*/</span><br><span class="line">    border-spacing: 10px;  /*关键!!!设置间距*/</span><br><span class="line">&#125;</span><br><span class="line">#left &#123;</span><br><span class="line">    display: table-cell;</span><br><span class="line">    width: 100px;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#center &#123;</span><br><span class="line">    display: table-cell;</span><br><span class="line">    width: 200px;</span><br><span class="line">    background-color: #eeff2b;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    display: table-cell;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：CSS Table以表格的形式显示</p>
+<p>优缺点：</p>
+<ul>
+<li>优点：代码简单；容易理解；适用于宽度高度未知情况；兼容性好（ie8+）</li>
+<li>缺点：margin失效；设置间隔比较麻烦；设置tabl-cell的元素，宽度和高度的值设置百分比无效，需要给它的父元素设置<code>display: table;</code> 才生效；table-cell不感知margin，在父元素上设置table-row等属性，也会使其不感知height；设置float或position会对默认布局造成破坏，可以考虑为之增加一个父div定义float等属性；内容溢出时会自动撑开父元素</li>
+</ul>
+<h5 id="5-使用flex实现-1"><a href="#5-使用flex实现-1" class="headerlink" title="(5)使用flex实现"></a>(5)使用flex实现</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;center&quot;&gt;中间定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#parent &#123;</span><br><span class="line">    height: 500px;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">#left &#123;</span><br><span class="line">    margin-right: 10px;  /*间距*/</span><br><span class="line">    width: 100px;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#center &#123;</span><br><span class="line">    margin-right: 10px;  /*间距*/</span><br><span class="line">    width: 200px;</span><br><span class="line">    background-color: #eeff2b;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    flex: 1;  /*均分#parent剩余的部分达到自适应*/</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：flex设置排列方式、对齐方式罢了，请查阅文末flex阅读推荐</p>
+<p>优缺点</p>
+<ul>
+<li>优点：简单灵活；功能强大</li>
+<li>缺点：PC端<a href="https://caniuse.com/#search=flex" target="_blank" rel="noopener">兼容性不好</a>，移动端（Android4.0+）</li>
+<li>flex务必带上兼容，写法请参考文末阅读推荐，也可以使用autoprefixer</li>
+</ul>
+<h5 id="6-使用Grid实现-1"><a href="#6-使用Grid实现-1" class="headerlink" title="(6)使用Grid实现"></a>(6)使用Grid实现</h5><p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;center&quot;&gt;中间定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列自适应&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#parent &#123;</span><br><span class="line">    height: 500px;</span><br><span class="line">    display: grid;</span><br><span class="line">    grid-template-columns: 100px 200px auto; /*设置3列,固定第一第二列的宽度,第三列auto或者1fr*/</span><br><span class="line">&#125;</span><br><span class="line">#left &#123;</span><br><span class="line">    margin-right: 10px;  /*间距*/</span><br><span class="line">    background-color: #f00;</span><br><span class="line">&#125;</span><br><span class="line">#center &#123;</span><br><span class="line">    margin-right: 10px;  /*间距*/</span><br><span class="line">    background-color: #eeff2b;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;background-color: #0f0;&#125;</span><br></pre></td></tr></table></figure>
+<p>原理：css grid布局，请查看文末的阅读推荐</p>
+<p>优缺点</p>
+<ul>
+<li>优点：灵活划分网格区域；新型布局利器，适用于页面三维布局</li>
+<li>缺点：<a href="https://caniuse.com/#search=grid" target="_blank" rel="noopener">兼容性不好</a>，移动端（Android5.0+）</li>
+</ul>
+<h4 id="5-4-两侧定宽-中间自适应"><a href="#5-4-两侧定宽-中间自适应" class="headerlink" title="5.4 两侧定宽,中间自适应"></a>5.4 两侧定宽,中间自适应</h4><h5 id="4-2-1-双飞翼布局方法▲"><a href="#4-2-1-双飞翼布局方法▲" class="headerlink" title="4.2.1 双飞翼布局方法▲"></a>4.2.1 双飞翼布局方法▲</h5><p>效果图:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8192053-0686025b23db6b21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;header&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;!--中间栏需要放在前面--&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div id=&quot;center&quot;&gt;</span><br><span class="line">        &lt;div id=&quot;center_inbox&quot;&gt;中间自适应&lt;/div&gt;</span><br><span class="line">        &lt;hr&gt;  &lt;!--方便观察原理--&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列定宽&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#header &#123;</span><br><span class="line">    height: 60px;</span><br><span class="line">    background-color: #ccc;</span><br><span class="line">&#125;</span><br><span class="line">#left &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    margin-left: -100%; /*调整#left的位置,值等于自身宽度*/</span><br><span class="line">    background-color: #f00;</span><br><span class="line">    opacity: 0.5;</span><br><span class="line">&#125;</span><br><span class="line">#center &#123;</span><br><span class="line">    height: 500px;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 100%;</span><br><span class="line">    background-color: #eeff2b;</span><br><span class="line">&#125;</span><br><span class="line">#center_inbox&#123;</span><br><span class="line">    height: 480px;</span><br><span class="line">    border: 1px solid #000;</span><br><span class="line">    margin: 0 220px 0 120px;  /*关键!!!左右边界等于左右盒子的宽度,多出来的为盒子间隔*/</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    margin-left: -200px;  /*使right到指定的位置,值等于自身宽度*/</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">    opacity: 0.5;</span><br><span class="line">&#125;</span><br><span class="line">#footer &#123;</span><br><span class="line">    clear: both;  /*注意清除浮动!!*/</span><br><span class="line">    height: 60px;</span><br><span class="line">    background-color: #ccc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4-2-2-圣杯布局方法"><a href="#4-2-2-圣杯布局方法" class="headerlink" title="4.2.2 圣杯布局方法"></a>4.2.2 圣杯布局方法</h5><p>效果图:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/8192053-f0d306a6a14f995c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>html代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;header&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;!--#center需要放在前面--&gt;</span><br><span class="line">    &lt;div id=&quot;center&quot;&gt;中间自适应</span><br><span class="line">        &lt;hr&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;left&quot;&gt;左列定宽&lt;/div&gt;</span><br><span class="line">    &lt;div id=&quot;right&quot;&gt;右列定宽&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>css代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#header&#123;</span><br><span class="line">    height: 60px;</span><br><span class="line">    background-color: #ccc;</span><br><span class="line">&#125;</span><br><span class="line">#parent &#123;</span><br><span class="line">    box-sizing: border-box;</span><br><span class="line">    height: 500px;</span><br><span class="line">    padding: 0 215px 0 115px;  /*为了使#center摆正,左右padding分别等于左右盒子的宽,可以结合左右盒子相对定位的left调整间距*/</span><br><span class="line">&#125;</span><br><span class="line">#left &#123;</span><br><span class="line">    margin-left: -100%;  /*使#left上去一行*/</span><br><span class="line">    position: relative;</span><br><span class="line">    left: -115px;  /*相对定位调整#left的位置,正值大于或等于自身宽度*/</span><br><span class="line">    float: left;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    background-color: #f00;</span><br><span class="line">    opacity: 0.5;</span><br><span class="line">&#125;</span><br><span class="line">#center &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 100%;  /*由于#parent的padding,达到自适应的目的*/</span><br><span class="line">    height: 500px;</span><br><span class="line">    box-sizing: border-box;</span><br><span class="line">    border: 1px solid #000;</span><br><span class="line">    background-color: #eeff2b;</span><br><span class="line">&#125;</span><br><span class="line">#right &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    left: 215px; /*相对定位调整#right的位置,大于或等于自身宽度*/</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 500px;</span><br><span class="line">    margin-left: -200px;  /*使#right上去一行*/</span><br><span class="line">    float: left;</span><br><span class="line">    background-color: #0f0;</span><br><span class="line">    opacity: 0.5;</span><br><span class="line">&#125;</span><br><span class="line">#footer&#123;</span><br><span class="line">    height: 60px;</span><br><span class="line">    background-color: #ccc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/16/HTML常用标签/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shi qiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Martin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/16/HTML常用标签/" itemprop="url">HTML 常用标签</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-16T21:27:36+08:00">
+                2018-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>HTML（超文本标记语言——HyperText Markup Language）是构成 Web 世界的一砖一瓦。它通常描述并定义了一个网页的内容和基本布局。我们先来看一下HTML合规范的基本结构：</p>
+<pre><code>&lt;!DOCTYPE html&gt;   &lt;!-- 声明文档类型是html5 --&gt;
+&lt;html&gt;            &lt;!-- 根元素 --&gt;
+    &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;        &lt;!-- 这个元素设置文档使用utf-8字符集编码 --&gt;
+    &lt;title&gt;Document&lt;/title&gt;        &lt;!-- 设置页面标题，出现在浏览器标签上 --&gt;
+    &lt;/head&gt;
+    &lt;body&gt;    
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h3><ol>
+<li><p>标题标签<br><code>&lt;h1&gt;&lt;/h1&gt;  , &lt;h2&gt;&lt;/h2&gt; , &lt;h3&gt;&lt;/h3&gt;, &lt;h4&gt;&lt;/h4&gt;, &lt;h5&gt;&lt;/h5&gt;, &lt;h6&gt;&lt;/h6&gt;</code><br>分别是六级标题的样式.</p>
+</li>
+<li><p>段落标签<br></p><p></p> paragraph 段落标签<br>顾名思义，这是一个定义段落的标签，是一个块级元素。<p></p>
+<p><code>&lt;p&gt;这是一个段落&lt;/p&gt;</code></p>
+</li>
+<li><p>div span 标签<br>这两个标签没有实际语义，我们可以把他们看做盒子，通常用来网页布局<br><code>&lt;div&gt;&lt;/div&gt;
+&lt;span&gt;&lt;/span&gt;</code></p>
+</li>
+<li><p>em和strong标签<br>strong和em（emphasis)语义都是强调，在HTML5中，strong这个元素强调内容非常重要！(strong importance for its contents) 对比于html4仅是一个简单的强调，语义更加加重了。Em标签(Emphasis)用于改变一个句子的意思(比如”我<em>喜欢</em>胡萝卜” 和”我喜欢<em>胡萝卜</em>“，分别强调喜欢和胡萝卜), <strong>Strong用来对一个句子的部分增加重要性</strong>(比如 “警告! 这非常危险。”)<br>Strong和Emphasis都可以分别通过嵌套来增加相对重要性或强调重点。em标签的显示方式是内容倾斜，strong标签的显示方式则是加粗。相对的同样也有无语义的，仅仅是物理状态的倾斜和加粗。</p>
+</li>
+<li><p>img标签<br>HTML Image 元素（ <img> ）代表文档中的一个图像。</p>
+<p><code>&lt;img src =&quot;&quot; alt = &quot;&quot;&gt;</code><br>src属性是用于指定图像文件的路径和文件名，是img的必要属性。<br>alt属性定义了描述图像的替换文本。即图片加载不出来或出现错误的时候，我们将看到这个显示。<br>img标签是一个空标签，没有内容，没有结束标签。<br>img标签是一个可替换标签，它的展现不由css控制，是外观渲染独立于css的外部对象。</p>
+</li>
+<li><p>iframe标签<br>①嵌套一个网页进去</p>
+</li>
+</ol>
+<p>如图所示，我们的页面上就会多一个窗口链接到我们输入的地址的网页<br>frameborder是iframe的边框，非常丑，我们默认不要他吧</p>
+<p> ②name属性和a标签一起用<br>    比如我们给iframe一个name，然后a标签的target等于这个name，我们就可以使a标签所跳转的页面在当前页面iframe的窗口打开了。</p>
+<p>这样我们无论是点击qq还是百度，都可以在当前窗口打开了</p>
+<ol start="7">
+<li><p>a标签 （HTTP GET请求）</p>
+<p>anchor的缩写，<code>&lt;a&gt;</code> 元素 (或锚元素) 可以创建一个到其他网页、文件、同一页面内的位置、电子邮件地址或任何其他URL的超链接。<br><code>&lt;a href =&quot;http://qq.com&quot; target=&quot;_blank&quot;&gt;</code></p>
+</li>
+</ol>
+<p>①href属性是必需属性，定义一个超文本链接来源<br>注意：我们如果输入//qq.com,这是一个无协议相对地址，那么当前什么协议，就是什么协议，所以我们打开会是file://qq.com,但是我们不常用file协议，容易出错，那我们如何预览我们的index.html呢？</p>
+<p>1.1.1  上传到github,用github 预览功能<br>1.1.2  npm i -g http-server 下载这个小工具<br>    每次运行的时候</p>
+<p><code>http-server . -c -1</code></p>
+<p>这样我们尽管<a href="//qq.com">QQ</a>,是无协议相对地址，但由于当前已经在http协议下，我们就可以http协议访问了</p>
+<p>1.2 注意：当href=”#” 时不是GET请求，因为锚点定位，只是当前页面的跳转<br>可以使用href=”#top”或者href=”#”链接返回到页面顶部。</p>
+<p>1.3.1 想要点击a标签，执行一段 javascript 代码</p>
+<p><code>&lt;a href=&quot;javascript:alert(1)&quot;&gt;&lt;/a&gt;</code></p>
+<p>1.3.2 伪协议可以实现「点击之后没有任何动作的 a 标签」，满足这种奇葩需求</p>
+<p><code>&lt;a href=&quot;javascript:;&quot;&gt;&lt;/a&gt;</code></p>
+<p>②target属性</p>
+<p>target=_blank 新窗口打开</p>
+<p>target=_self 默认，在自己当前页面打开</p>
+<p>target=_parent 在父页面打开</p>
+<p>target=_top 在最上层页面打开</p>
+<p>结合iframe理解即可</p>
+<p>③download属性</p>
+<p><code>&lt;a href =&quot;http://qq.com&quot; download &gt;下载&lt;/a&gt;</code></p>
+<p>此属性指示浏览器下载URL而不是导航到URL，因此将提示用户将其保存为本地文件。<br>注意：如果HTTP的Content-Disposition：存在,并且赋予了一个和这个属性不同的文件名，HTTP会优先于此属性。</p>
+<ol start="8">
+<li>form标签（HTTP POST请求）<br>form标签与a标签一样，是发起了页面跳转，但是两者的区别是，form标签发起的是post请求，而a标签是get请求。</li>
+</ol>
+<p>①form标签中必须要有提交按钮</p>
+<p>②form是用来发送post请求，常见于我们登录时，比如我们上图就是一个登陆的界面，那我们提交后，看看是不是发送了post的请求呢？</p>
+<p>确实是post请求，这里要注意，不要忘记method=post,否则提交上去还是get.</p>
+<p>③我们提交的内容，如果使用GET，他会默认的放在查询参数里，如图：</p>
+<p>我的name和密码都被默认为查询参数了，那如果是post呢？</p>
+<p>post会把参数默认的放在请求的第四部分，还记得我们之前讲到请求的第四部分是什么吗，是我们上传的数据。</p>
+<p>④form也有target属性，与a 标签用法一致~就不再赘述了~</p>
+<ol start="9">
+<li>input 标签<br>用法很多，详细的去查MDN文档~<br>①type属性值为text, 单行字段；换行会将自动从输入的值中移除。<br>type属性值为password，顾名思义，密码，一个值被遮盖的单行文本字段。</li>
+</ol>
+<p>②type属性为radio 单选框，但必须命名到一组</p>
+<p>③ type属性为checkbox 复选框 也要name到一组</p>
+<p>④ <code>&lt;button&gt;</code><br> <code>&lt;button&gt;</code>很有意思，如果没有type属性，也没有submit，比如：<br><code>&lt;button&gt;button&lt;/button&gt;</code><br>那么此时的button会自动升级成提交按钮，而如果<br><code>&lt;input type=&quot;button&quot; value=&quot;button&quot;&gt;</code><br><code>&lt;button type=&quot;button&quot;&gt;按钮&lt;/button&gt;</code><br>这两种情况下，button只是普通按钮。</p>
+<ol start="10">
+<li>label标签<br>常用于把label和表单元素绑定在一起，比如用label把用户名和输入框连在一起，那么当我们点击用户名时，输入框就会获得输入焦点.</li>
+</ol>
+<p><code>&lt;label&gt;用户名&lt;input type=&quot;text&quot;&gt;&lt;/label&gt;</code></p>
+<ol start="11">
+<li>select<br>select是一个表单控件，我们可以通俗的叫他下拉菜单，菜单下跟着<option>选项</option></li>
+</ol>
+<p>disabled意思为不可选，即第三组不可选择<br>selected意思为默认被选择项，如图上自动选择在第四组上<br>multiple意思为可以选择多个选项，</p>
+<p>我已经选择了二四五组，但是第三组由于disabled，不可选~</p>
+<ol start="12">
+<li>table 标签</li>
+</ol>
+<p>很多人会不知道 colgroup ，它可以用来给 table 列表加宽度等属性，如图可清楚的看到这一状态<br>thead tbody tfoot 三个标签可以省略，但是加上的话会使语义更完整，既是顺序发生变化也浏览器也可以根据这三个标签还原成员列表。<br>border-collapse可以合并两个相邻的边框线，使中间没有空隙，更加美观一点。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/30/HTTP请求与响应/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -673,7 +1515,7 @@
 <li>1.1.8 再次运行 git status -sb，可以看到 ?? 变成了 A      <br>  Initial commit on master      <br>  A  css/style.css      <br>  A  index.html      <br>A 的意思就是添加，也就是说你告诉 git，这些文件我要加到仓库里</li>
 <li>1.1.9 使用 git commit -m “信息” 将你 add 过的内容「正式提交」到本地仓库（.git就是本地仓库），并添加一些注释信息，方便日后查阅。      <br><br>i. 你可以一个一个地 commit.          <br>  git commit index.html -m ‘添加index.html’          <br>  git commit css/style.css -m “添加 css/style.css”      <br>ii. 你也可以一次性 commit.          <br>git commit . -m “添加了几个文件”.</li>
 <li>1.1.10 再次运行 git status -sb，发现没有文件变动了，这是因为文件的变动已经记录在仓库里了。</li>
-<li>1.1.11 这时你使用 git log 就可以看到历史上的变动：          <br>commit f0d95058cd32a332b98967f6c0a701c64a00810a<br>Author: frankfang <a href="mailto:&#102;&#114;&#x61;&#110;&#x6b;&#x66;&#x61;&#110;&#103;&#x31;&#x39;&#x39;&#x30;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;" target="_blank" rel="noopener">&#102;&#114;&#x61;&#110;&#x6b;&#x66;&#x61;&#110;&#103;&#x31;&#x39;&#x39;&#x30;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a><br>Date:   Thu Sep 28 22:30:43 2017 +0800            <br>添加几个文件</li>
+<li>1.1.11 这时你使用 git log 就可以看到历史上的变动：          <br>commit f0d95058cd32a332b98967f6c0a701c64a00810a<br>Author: frankfang <a href="mailto:&#x66;&#x72;&#97;&#x6e;&#107;&#x66;&#x61;&#110;&#103;&#49;&#57;&#57;&#48;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;" target="_blank" rel="noopener">&#x66;&#x72;&#97;&#x6e;&#107;&#x66;&#x61;&#110;&#103;&#49;&#57;&#57;&#48;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a><br>Date:   Thu Sep 28 22:30:43 2017 +0800            <br>添加几个文件</li>
 <li>1.1.12 以上就是 git add / git commit 的一次完整过程，可以看到，挺复杂的，需要多次练习熟记于心。</li>
 </ul>
 </li>
@@ -1020,7 +1862,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
